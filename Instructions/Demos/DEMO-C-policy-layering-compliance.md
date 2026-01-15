@@ -44,8 +44,8 @@ After this demonstration, learners will understand how to:
 **Action**: Access Intune configuration policies
 
 1. Open browser and navigate to **https://intune.microsoft.com**
-2. Navigate to **Devices** → **Configuration**
-3. Select **Create** → **New policy**
+2. Navigate to **Devices** → **Manage devices** → **Configuration**
+3. Select **+ Create** → **+ New policy**
 4. In the Create a profile blade:
    - **Platform**: Windows 10 and later
    - **Profile type**: Settings catalog
@@ -60,7 +60,9 @@ After this demonstration, learners will understand how to:
 - Configuration profiles list (empty or with existing policies)
 - Profile type options: Settings catalog vs. Templates
 
-**TODO**: Screenshot of Create policy with platform and profile type selection
+![Create policy with platform and profile type selection](media/microsoft-intune-admin-center-new-configuration-profile.png)
+
+---
 
 #### Step 1.2: Configure basic profile information
 
@@ -79,7 +81,9 @@ After this demonstration, learners will understand how to:
 **What to show**:
 - Basics page with name and description fields
 
-**TODO**: Screenshot of configuration profile basics page
+![Configuration profile basics page](media/microsoft-intune-admin-center-new-configuration-profile-basic-details.png)
+
+---
 
 #### Step 1.3: Add settings to the profile
 
@@ -89,13 +93,10 @@ After this demonstration, learners will understand how to:
 2. In the Settings picker, search for "**BitLocker**"
 3. Expand **BitLocker** category
 4. Check the following settings:
-   - **Require Device Encryption** → Set to **Yes** (or **True**)
-   - **BitLocker System Drive Policy** → Expand and configure:
-     - **Startup Authentication Required** → **Enabled**
-     - **Minimum PIN Length** → **6**
-     - **Recovery Options** → Configure recovery key storage
-5. Click outside the picker to close it
-6. Review configured settings in the profile
+   - **Require Device Encryption** → Set to **Enabled**
+   - **Removable Drives Exluded From Encryption** → Set to **Enabled**
+5. Close the settings picker.
+6. Review configured settings in the profile, set **Require Device Encryption** to **Enabled**
 7. Click **Next**
 
 **Talking points**:
@@ -106,18 +107,18 @@ After this demonstration, learners will understand how to:
 - "In production, you'd add more settings: firewall rules, Windows Defender, password policies, etc."
 
 **What to show**:
-- Settings picker with search functionality
-- Selected settings with values configured
-- How to expand categories and find specific settings
+- Settings picker with BitLocker options
+- Configured BitLocker settings in profile
 
-**TODO**: Screenshot of Settings picker with BitLocker options
-**TODO**: Screenshot of configured BitLocker settings in profile
+![Settings picker with BitLocker options](media/microsoft-intune-admin-center-create-baseline-profile-settings.png)
+
+---
 
 #### Step 1.4: Assign the profile to a group
 
 **Action**: Target the profile to Windows devices
 
-1. On the **Assignments** page, under **Included groups**, click **+ Add groups**
+1. On the **Assignments** page, under **Included groups**, click **Add groups**
 2. Search for and select **All Windows Devices** (dynamic group from Demo A)
 3. Click **Select**
 4. Leave **Excluded groups** empty (or demonstrate exclusion if desired)
@@ -134,7 +135,7 @@ After this demonstration, learners will understand how to:
 - Selected group appearing in included groups
 - Exclusion option
 
-**TODO**: Screenshot of Assignments page with group selected
+![Assignments page with group selected](media/microsoft-intune-admin-center-new-configuration-profile-assignments.png)
 
 #### Step 1.5: Review and create
 
@@ -157,8 +158,7 @@ After this demonstration, learners will understand how to:
 - Review page with all configuration details
 - Success confirmation message
 
-**TODO**: Screenshot of Review + create page
-**TODO**: Screenshot of success confirmation
+![Review + create page](media/microsoft-intune-admin-center-new-configuration-profile-final.png)
 
 ---
 
@@ -169,9 +169,10 @@ After this demonstration, learners will understand how to:
 **Action**: Access Intune compliance policies
 
 1. In Intune admin center, navigate to **Devices** → **Compliance**
-2. Select **Create policy**
+2. Select **+ Create policy**
 3. In the Create a policy blade:
    - **Platform**: Windows 10 and later
+   - **Profile type**: Windows 10/11 compliance policy
 4. Click **Create**
 
 **Talking points**:
@@ -183,7 +184,7 @@ After this demonstration, learners will understand how to:
 - Compliance policies list
 - Platform selection for new policy
 
-**TODO**: Screenshot of Create compliance policy with platform selection
+---
 
 #### Step 2.2: Configure policy basics
 
@@ -201,7 +202,7 @@ After this demonstration, learners will understand how to:
 **What to show**:
 - Basics page with name and description
 
-**TODO**: Screenshot of compliance policy basics page
+![Compliance policy basics page](media/microsoft-intune-admin-center-new-compliance-policy-basic-details.png)
 
 #### Step 2.3: Configure compliance settings
 
@@ -211,7 +212,7 @@ After this demonstration, learners will understand how to:
 
    **Device Health**:
    - **Require BitLocker**: **Require**
-   - **Secure Boot enabled on device**: **Require**
+   - **Secure Boot**: **Require**
 
    **Device Properties**:
    - **Minimum OS version**: **10.0.19041** (Windows 10 20H1 minimum)
@@ -219,7 +220,8 @@ After this demonstration, learners will understand how to:
    **System Security**:
    - **Require a password to unlock mobile devices**: **Require**
    - **Minimum password length**: **8**
-   - **Password complexity**: **Require** (alphanumeric)
+   - **Password type**: **Alphanumeric**
+   - **Password complexity**: **Require digits, lowercase, uppercase, and special characters**
    - **Firewall**: **Require**
    - **Antivirus**: **Require**
    - **Antispyware**: **Require**
@@ -239,44 +241,92 @@ After this demonstration, learners will understand how to:
 - System Security settings section
 - How each requirement can be set to Require, Not configured, or specific values
 
-**TODO**: Screenshot of Device Health compliance settings
-**TODO**: Screenshot of System Security compliance settings
+![Compliance policy settings page](media/microsoft-intune-admin-center-new-compliance-policy-settings.png)
 
-#### Step 2.4: Configure actions for noncompliance
+#### Step 2.4: Create notification message template
+
+**Action**: Create a template for noncompliance email notifications
+
+1. Before configuring actions, navigate to **Devices** → **Compliance** → **Notifications** tab
+2. Click **+ Create notification**
+3. On the **Basics** page:
+   - **Name**: `Device Compliance Notification`
+   - **Email header - Include company logo**: **Enabled** (optional)
+   - **Email footer - Include company name**: **Enabled** (optional)
+   - **Email footer - Include contact information**: **Enabled** (optional)
+4. Click **Next**
+5. On the **Notification message templates** page:
+   - **Subject**: `Action Required: Your device is not compliant`
+   - **Message**: 
+     ```
+     Hello {{UserName}},
+     
+     Your device {{DeviceName}} does not meet our organization's security requirements.
+     
+     Please update your device to maintain access to company resources. Common issues include:
+     - BitLocker encryption not enabled
+     - Missing required Windows updates
+     - Firewall or antivirus disabled
+     
+     If you need assistance, please contact IT support.
+     ```
+6. Click **Next**, review, and click **Create**
+
+**Talking points**:
+- "Notification templates must be created before you can use them in compliance policies"
+- "Templates can include variables like UserName and DeviceName for personalization"
+- "You can create multiple templates for different scenarios or languages"
+- "Users will receive this email when their device becomes noncompliant"
+- "The message should include clear guidance on how to remediate issues"
+
+**What to show**:
+- Notifications tab in Compliance section
+- Template creation with variable tokens
+- Company branding options (header/footer)
+
+<!-- **TODO**: Screenshot of notification template creation -->
+
+#### Step 2.5: Configure actions for noncompliance
 
 **Action**: Define what happens when devices are noncompliant
 
-1. On the **Actions for noncompliance** page, review the default action:
+1. Navigate back to **Devices** → **Compliance** and continue with your compliance policy creation
+2. On the **Actions for noncompliance** page, review the default action:
    - **Action**: Mark device noncompliant
    - **Schedule (days after noncompliance)**: Immediately (0 days)
-2. Click **+ Add** to add an additional action:
-   - **Action**: Send email to end user
-   - **Message template**: Default noncompliance message
-   - **Schedule**: 3 days after noncompliance
-3. Optionally add another action:
-   - **Action**: Retire the noncompliant device
-   - **Schedule**: 30 days after noncompliance
-4. Click **Next**
+3. Click **+ Add** to add a new action:
+   - **Action**: **Send email to end user**
+   - **Message template**: Select **Device Compliance Notification** (the template we just created)
+   - **Schedule**: **3** days after noncompliance
+   - Click **Add**
+4. Optionally add another action:
+   - **Action**: **Retire the noncompliant device**
+   - **Schedule**: **30** days after noncompliance
+   - Click **Add**
+5. Click **Next**
 
 **Talking points**:
 - "Actions define consequences of noncompliance - escalating from warnings to blocking access"
 - "Immediately mark noncompliant means conditional access can block right away"
-- "Email notification gives users a grace period to fix issues before access is blocked"
-- "Retire action (extreme) removes corporate data after long-term noncompliance"
+- "Email notification at 3 days gives users a grace period to fix issues"
+- "Retire action (extreme) removes corporate data after 30 days of continued noncompliance"
+- "You can add multiple email reminders at different intervals if needed"
 - "In production, tune these schedules to balance security and user experience"
 
 **What to show**:
 - Default action (mark noncompliant immediately)
-- How to add additional escalating actions
+- How to add additional escalating actions with the Add button
+- Message template selection dropdown
 - Schedule field for each action
+- Multiple actions with different schedules
 
-**TODO**: Screenshot of Actions for noncompliance with multiple actions
+<!-- **TODO**: Screenshot of Actions for noncompliance with multiple actions configured -->
 
-#### Step 2.5: Assign the compliance policy
+#### Step 2.6: Assign the compliance policy
 
 **Action**: Target the policy to Windows devices
 
-1. On the **Assignments** page, under **Included groups**, click **+ Add groups**
+1. On the **Assignments** page, under **Included groups**, click **Add groups**
 2. Select **All Windows Devices**
 3. Click **Select**
 4. Click **Next**
@@ -289,9 +339,9 @@ After this demonstration, learners will understand how to:
 **What to show**:
 - Group assignment for compliance policy
 
-**TODO**: Screenshot of compliance policy assignments
+<!--**TODO**: Screenshot of compliance policy assignments-->
 
-#### Step 2.6: Review and create
+#### Step 2.7: Review and create
 
 **Action**: Create the compliance policy
 
@@ -307,7 +357,7 @@ After this demonstration, learners will understand how to:
 - Review page with all compliance settings
 - Success confirmation
 
-**TODO**: Screenshot of compliance policy review page
+<!--**TODO**: Screenshot of compliance policy review page-->
 
 ---
 
@@ -317,18 +367,19 @@ After this demonstration, learners will understand how to:
 
 **Action**: Create a filter based on device ownership
 
-1. In Intune admin center, navigate to **Tenant administration** → **Filters**
+1. In Intune admin center, navigate to **Tenant administration** → **Assignment filters**
 2. Click **+ Create**
 3. Select filter type: **Managed devices**
 4. On the **Basics** page:
    - **Filter name**: `Corporate-Owned Devices Only`
    - **Description**: `Filter for devices with ownership type of Corporate`
+   - **Platform**: `Windows 10 and later`
 5. Click **Next**
-6. On the **Rules** page, click **+ Add rule**:
-   - **Property**: **Ownership**
+6. On the **Rules** page, configure a new rule:
+   - **Property**: **deviceOwnership**
    - **Operator**: **Equals**
    - **Value**: **Corporate**
-7. Click **Next**
+7. Click **Next** and then **Create**
 
 **Talking points**:
 - "Filters provide additional targeting beyond group membership"
@@ -341,7 +392,7 @@ After this demonstration, learners will understand how to:
 - Rule builder with property, operator, value
 - Preview of matching devices (if available)
 
-**TODO**: Screenshot of filter rule configuration
+![Filter rule configuration](media/microsoft-intune-admin-center-new-assignment-filter-rules.png)
 
 #### Step 3.2: Apply filter to a policy assignment (demonstration only)
 
@@ -349,9 +400,9 @@ After this demonstration, learners will understand how to:
 
 1. Navigate back to **Devices** → **Configuration**
 2. Select the **Windows Security Settings** profile created earlier
-3. Click **Properties** → **Assignments** → **Edit**
+3. Under **Properties** → **Assignments**, select **Edit**
 4. For the **All Windows Devices** group, expand **Edit filter**
-5. Select **Apply filter**: **Include filtered devices in assignment**
+5. Select **Include filtered devices in assignment**
 6. Choose filter: **Corporate-Owned Devices Only**
 7. **Do not save** - this is demonstration only (click **Cancel**)
 
@@ -366,7 +417,7 @@ After this demonstration, learners will understand how to:
 - Include vs. Exclude filter option
 - How filters combine with groups
 
-**TODO**: Screenshot of applying filter to policy assignment
+<!-- **TODO**: Screenshot of applying filter to policy assignment -->
 
 ---
 
@@ -379,7 +430,6 @@ After this demonstration, learners will understand how to:
 1. Navigate to **Devices** → **All devices**
 2. Select the enrolled Windows device from Demo B
 3. Click **Sync** in the toolbar
-4. Wait 15-30 seconds, then click **Refresh**
 
 **Talking points**:
 - "Sync triggers immediate policy download - no need to wait 8 hours"
@@ -389,7 +439,7 @@ After this demonstration, learners will understand how to:
 - Device sync action
 - Last check-in timestamp updating
 
-**TODO**: Screenshot of device sync button
+![Device sync button](media/microsoft-intune-admin-center-device-sync.png)
 
 #### Step 4.2: Check configuration profile status
 
@@ -411,7 +461,7 @@ After this demonstration, learners will understand how to:
 - Configuration profile list on device page
 - Status indicator (green check, yellow pending, red error)
 
-**TODO**: Screenshot of device configuration showing profile status
+![Device configuration profile status](media/microsoft-intune-admin-center-device-configuration-assignment-status.png)
 
 #### Step 4.3: Check compliance policy status
 
@@ -435,14 +485,13 @@ After this demonstration, learners will understand how to:
 - Compliance policy list with compliance status
 - Detailed compliance check results (expand policy)
 
-**TODO**: Screenshot of device compliance status
-**TODO**: Screenshot of detailed compliance check (pass/fail per setting)
+![Device compliance status](media/microsoft-intune-admin-center-device-compliance-status.png)
 
 #### Step 4.4: View compliance dashboard
 
 **Action**: Show organization-wide compliance view
 
-1. Navigate to **Devices** → **Compliance**
+1. Navigate to **Devices** → **Compliance** and select the **Windows Compliance - Security Settings** policy
 2. Review the **Compliance status** dashboard:
    - Total devices
    - Compliant devices count
@@ -461,7 +510,7 @@ After this demonstration, learners will understand how to:
 - Compliant vs. noncompliant breakdown
 - List of noncompliant devices (if any exist)
 
-**TODO**: Screenshot of compliance dashboard
+<!-- **TODO**: Screenshot of compliance dashboard -->
 
 ---
 
