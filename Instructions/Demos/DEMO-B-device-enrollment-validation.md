@@ -49,7 +49,7 @@ After this demonstration, learners will understand how to:
 1. On the Windows 11 device, open **Settings** (press Windows key + I)
 2. In the left navigation, select **Accounts**
 3. Select **Access work or school**
-4. Click **+ Connect** button
+4. Click **Connect** button
 
 **Talking points**:
 - "This is the user-facing experience for enrolling a device"
@@ -60,7 +60,7 @@ After this demonstration, learners will understand how to:
 - Settings app navigation to Access work or school
 - Connect button that initiates enrollment
 
-**TODO**: Screenshot of Access work or school page with Connect button highlighted
+![Access work or school page with Connect button highlighted](media/windows-11-account-school-status.png)
 
 #### Step 1.2: Sign in with organizational account
 
@@ -86,8 +86,9 @@ After this demonstration, learners will understand how to:
 
 **Common pause point**: After clicking Next, pause for 15-30 seconds while device contacts Intune and downloads policies.
 
-**TODO**: Screenshot of Microsoft sign-in page for work account
-**TODO**: Screenshot of "You're all set!" success message
+<!-- **TODO**: Screenshot of Microsoft sign-in page for work account
+
+**TODO**: Screenshot of "You're all set!" success message-->
 
 #### Step 1.3: Verify connection in Windows settings
 
@@ -111,8 +112,8 @@ After this demonstration, learners will understand how to:
 - Info page showing management areas (Security policies, Compliance policies, etc.)
 - Last sync time
 
-**TODO**: Screenshot of connected account in Access work or school
-**TODO**: Screenshot of Info page showing managed areas
+![Connected account in Access work or school](media/windows-11-account-school-status.png)
+<!-- **TODO**: Screenshot of Info page showing managed areas -->
 
 ---
 
@@ -123,7 +124,7 @@ After this demonstration, learners will understand how to:
 **Action**: Verify device registration in Entra ID
 
 1. Switch to browser with **https://entra.microsoft.com** open
-2. Navigate to **Identity** → **Devices** → **All devices**
+2. Navigate to **Entra ID** → **Devices** → **All devices**
 3. Look for the newly enrolled device in the list (may take 1-2 minutes to appear)
 4. Click on the device name to view device details
 
@@ -141,8 +142,7 @@ After this demonstration, learners will understand how to:
   - Operating system: Windows
   - Compliance status
 
-**TODO**: Screenshot of All devices list with new device highlighted
-**TODO**: Screenshot of device details page in Entra admin center
+![All devices list with new device highlighted](media/microsoft-entra-admin-center-devices-overview.png)
 
 #### Step 2.2: Review device properties
 
@@ -167,7 +167,7 @@ After this demonstration, learners will understand how to:
 - MDM field showing Microsoft Intune
 - Compliance status
 
-**TODO**: Screenshot of device properties with MDM and compliance fields highlighted
+![Device properties with MDM and compliance fields highlighted](media/microsoft-entra-admin-center-demo-device-settings.png)
 
 ---
 
@@ -191,7 +191,7 @@ After this demonstration, learners will understand how to:
 - All devices list in Intune
 - Device showing in list with platform (Windows), enrollment date, compliance status
 
-**TODO**: Screenshot of Intune All devices list with new device
+<!--**TODO**: Screenshot of Intune All devices list with new device-->
 
 #### Step 3.2: Review device overview and properties
 
@@ -199,10 +199,9 @@ After this demonstration, learners will understand how to:
 
 1. On the device overview page, review the following sections:
    - **Device name**: Hostname of the Windows device
-   - **Managed by**: Intune
    - **Ownership**: Corporate or Personal (should show Corporate)
    - **Compliance state**: Compliant, Not compliant, or In grace period
-   - **Operating system**: Windows 11 (or specific version)
+   - **Operating system**: Windows 11 (or Virtual Machine)
    - **Last check-in**: Timestamp of last sync with Intune
    - **Primary user**: Alex Wilber
 2. Click **Properties** in the left menu to see additional device details
@@ -219,8 +218,7 @@ After this demonstration, learners will understand how to:
 - Last check-in time
 - Properties page with detailed information
 
-**TODO**: Screenshot of device overview page with key fields labeled
-**TODO**: Screenshot of device properties page
+![Device properties page](media/microsoft-intune-admin-center-demo-device-settings.png)
 
 #### Step 3.3: View device compliance details
 
@@ -230,7 +228,7 @@ After this demonstration, learners will understand how to:
 2. Review compliance policy status:
    - If no compliance policies assigned: Shows "No compliance policies assigned"
    - If policies assigned: Shows policy name and compliance state
-3. Click **Configurations** in the left menu
+3. Click **Device configuration** in the left menu
 4. Review configuration profile status:
    - Shows any assigned configuration profiles
    - Status: Pending, Success, Error, or Not applicable
@@ -245,8 +243,9 @@ After this demonstration, learners will understand how to:
 - Device compliance page (empty if no policies assigned)
 - Configurations page showing any auto-assigned profiles (like Windows Update policies)
 
-**TODO**: Screenshot of device compliance page
-**TODO**: Screenshot of configurations page
+![Device compliance page](media/microsoft-intune-admin-center-demo-device-compliance.png)
+
+![Configurations page](media/microsoft-intune-admin-center-device-configuration-profile.png)
 
 #### Step 3.4: Review assigned policies and apps
 
@@ -254,7 +253,7 @@ After this demonstration, learners will understand how to:
 
 1. On the device page, click **Managed apps** in the left menu
 2. View any apps assigned to the device (may be empty for new enrollment)
-3. Click **Properties** again, then scroll to **Group memberships**
+3. Under **Monitor**, select **Group memberships**
 4. Verify device is a member of expected groups (e.g., "All Windows Devices" dynamic group from Demo A)
 
 **Talking points**:
@@ -267,8 +266,8 @@ After this demonstration, learners will understand how to:
 - Managed apps page (even if empty, explain it will populate as apps are assigned)
 - Group memberships showing dynamic group membership
 
-**TODO**: Screenshot of managed apps page
-**TODO**: Screenshot of group memberships
+
+![Group memberships](media/microsoft-intune-admin-center-demo-device-membership.png)
 
 ---
 
@@ -292,7 +291,7 @@ After this demonstration, learners will understand how to:
 - Sync button location
 - Last check-in updating to current time
 
-**TODO**: Screenshot of Sync button in device toolbar
+![Sync button in device toolbar](media/microsoft-intune-admin-center-device-sync.png)
 
 #### Step 4.2: View sync from end-user perspective (optional if time allows)
 
@@ -313,7 +312,7 @@ After this demonstration, learners will understand how to:
 - User-facing sync button location
 - Sync success message
 
-**TODO**: Screenshot of user-initiated sync in Windows settings
+![User-initiated sync in Windows settings](media/windows-11-device-sync.png)
 
 ---
 

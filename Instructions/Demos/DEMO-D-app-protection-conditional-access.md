@@ -44,15 +44,13 @@ After this demonstration, learners will understand how to:
 **Action**: Access MAM policies in Intune
 
 1. Navigate to **https://intune.microsoft.com**
-2. Go to **Apps** → **App protection policies**
-3. Click **+ Create policy** → Select **iOS/iPadOS** (or Android if using Android device)
+2. Go to **Apps** → **Manage apps** → **Protection**
+3. Click **+ Create policy** → Select **iOS/iPadOS**
 
 **Talking points**:
 - "App protection policies work WITHOUT enrolling the device - perfect for BYOD scenarios"
 - "These policies protect data in managed apps like Outlook, Teams, OneDrive"
 - "Even on personal devices, we can prevent copy/paste of corporate data to personal apps"
-
-**TODO**: Screenshot of app protection policies page
 
 #### Step 1.2: Configure policy basics and apps
 
@@ -77,7 +75,7 @@ After this demonstration, learners will understand how to:
 - "Only these apps will have access to corporate data"
 - "Data cannot be copied from these apps to unprotected apps"
 
-**TODO**: Screenshot of app selection page
+![App selection page](media/microsoft-intune-admin-center-app-protection-policy-ios.png)
 
 #### Step 1.3: Configure data protection settings
 
@@ -88,12 +86,12 @@ After this demonstration, learners will understand how to:
      - Send org data to other apps: **Policy managed apps**
      - Receive data from other apps: **Policy managed apps**
      - Save copies of org data: **Block**
-     - Cut, copy and paste between apps: **Policy managed apps with paste in**
+     - Restric cut, copy and paste between apps: **Policy managed apps with paste in**
    - **Encryption**:
      - Encrypt org data: **Require**
    - **Functionality**:
-     - Print org data: **Block**
-     - Screen capture and Google Assistant: **Block**
+     - Printing org data: **Block**
+     - Screen capture and Genmoji: **Block**
 2. Click **Next**
 
 **Talking points**:
@@ -102,7 +100,7 @@ After this demonstration, learners will understand how to:
 - "Encryption ensures data is protected at rest on the device"
 - "Blocking screenshot prevents accidental or malicious data leakage"
 
-**TODO**: Screenshot of data protection settings
+![Data protection settings](media/microsoft-intune-admin-center-app-protection-policy-ios-access-reqs.png)
 
 #### Step 1.4: Configure access requirements
 
@@ -111,6 +109,7 @@ After this demonstration, learners will understand how to:
 1. **Access requirements** page:
    - PIN for access: **Require**
    - PIN type: **Numeric**
+   - Simple PIN: **Block**
    - Minimum PIN length: **6**
    - Touch ID/Face ID instead of PIN: **Allow**
    - Override biometrics with PIN after timeout: **Require** (30 minutes)
@@ -124,7 +123,7 @@ After this demonstration, learners will understand how to:
 - "PIN times out after 30 minutes of inactivity for security"
 - "Users must re-authenticate with work credentials periodically"
 
-**TODO**: Screenshot of access requirements settings
+
 
 #### Step 1.5: Assign and create policy
 
@@ -141,7 +140,7 @@ After this demonstration, learners will understand how to:
 - "When users sign into protected apps on ANY device, policy applies"
 - "Policies apply within 5-10 minutes of user signing into app"
 
-**TODO**: Screenshot of app protection policy assignments
+![App protection policy assignments](media/microsoft-intune-admin-center-new-configuration-profile-assignments.png)
 
 ---
 
@@ -152,7 +151,7 @@ After this demonstration, learners will understand how to:
 **Action**: Access conditional access in Entra admin center
 
 1. Navigate to **https://entra.microsoft.com**
-2. Go to **Protection** → **Conditional Access** → **Policies**
+2. Go to **ID Protection** → **Risk-based Conditional Access** → **Policies**
 3. Click **+ New policy**
 
 **Talking points**:
@@ -160,7 +159,7 @@ After this demonstration, learners will understand how to:
 - "CA policies answer: 'Should this user/device be allowed to access this resource?'"
 - "Based on conditions (device compliance, location, risk), grant or block access"
 
-**TODO**: Screenshot of conditional access policies list
+![Conditional access policies list](media/microsoft-entra-admin-center-conditional-access.png)
 
 #### Step 2.2: Configure policy basics and assignments
 
@@ -172,7 +171,7 @@ After this demonstration, learners will understand how to:
      - Include: **All users** (or select pilot group)
      - Exclude: **Break glass admin account** (critical - always exclude emergency access account)
    - **Target resources**:
-     - Select: **Office 365 Exchange Online**
+     - Choose: **Select resources** > **Select specific resources** > **Office 365 Exchange Online**
 3. Leave other assignments at default
 
 **Talking points**:
@@ -180,7 +179,7 @@ After this demonstration, learners will understand how to:
 - "ALWAYS exclude break glass/emergency access accounts to prevent lockout"
 - "Targeting Exchange Online means: 'To read email, your device must be compliant'"
 
-**TODO**: Screenshot of CA policy assignments
+<!-- **TODO**: Screenshot of CA policy assignments -->
 
 #### Step 2.3: Configure access controls
 
@@ -201,7 +200,7 @@ After this demonstration, learners will understand how to:
 - "Report-only mode lets us test without impacting users - review sign-ins before enforcing"
 - "When confident, switch to On to start enforcement"
 
-**TODO**: Screenshot of CA policy grant controls
+![CA policy grant controls](media/microsoft-entra-admin-center-conditional-access-policy-exchange-online.png)
 
 ---
 
@@ -226,8 +225,8 @@ After this demonstration, learners will understand how to:
 - "Copy/paste restrictions prevent moving corporate data to personal apps"
 - "End user experience: slight inconvenience for significant security gain"
 
-**TODO**: Screenshot of PIN setup prompt in Outlook
-**TODO**: Screenshot of blocked screenshot message
+<!-- **TODO**: Screenshot of PIN setup prompt in Outlook -->
+<!-- **TODO**: Screenshot of blocked screenshot message -->
 
 #### Step 3.2: Test conditional access (desktop)
 
@@ -247,14 +246,14 @@ After this demonstration, learners will understand how to:
 - "Users are directed to contact IT or fix compliance issues"
 - "This protects corporate resources from insecure devices"
 
-**TODO**: Screenshot of successful access (compliant device)
-**TODO**: Screenshot of blocked access with compliance message
+<!-- **TODO**: Screenshot of successful access (compliant device) -->
+<!-- **TODO**: Screenshot of blocked access with compliance message -->
 
 #### Step 3.3: Review conditional access sign-in logs
 
 **Action**: Validate policy enforcement
 
-1. In Entra admin center, go to **Identity** → **Monitoring & health** → **Sign-in logs**
+1. In Entra admin center, go to **Entra ID** → **Monitoring & health** → **Sign-in logs**
 2. Find recent sign-in for test user
 3. Click on the sign-in event
 4. Review **Conditional Access** tab:
@@ -268,7 +267,7 @@ After this demonstration, learners will understand how to:
 - "Failure shows which control failed - helps troubleshooting"
 - "Use these logs to verify policies work before switching from Report-only to On"
 
-**TODO**: Screenshot of sign-in log with CA evaluation results
+<!-- **TODO**: Screenshot of sign-in log with CA evaluation results -->
 
 ---
 

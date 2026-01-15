@@ -45,11 +45,11 @@ After this demonstration, learners will understand how to:
 1. Navigate to **https://intune.microsoft.com**
 2. Go to **Endpoint security** → **Security baselines**
 3. Review available baselines:
-   - **Security Baseline for Windows 10 and later** (latest version)
-   - Microsoft Edge baseline
+   - Security Baseline for Windows 10 and later (latest version)
    - Microsoft Defender for Endpoint baseline
 4. Select **Security Baseline for Windows 10 and later**
-5. Click **+ Create profile**
+5. Click **+ Create policy**
+6. In the **Create a profile** pane, select **Create**
 
 **Talking points**:
 - "Security baselines are Microsoft's recommended security configurations"
@@ -57,7 +57,7 @@ After this demonstration, learners will understand how to:
 - "Windows baseline contains 100+ settings: BitLocker, firewall, Defender, user rights, etc."
 - "Baselines are updated regularly as new threats emerge"
 
-**TODO**: Screenshot of Security baselines page
+![Security baselines page](media/microsoft-intune-admin-center-create-baseline-profile.png)
 
 #### Step 1.2: Configure baseline settings
 
@@ -71,8 +71,8 @@ After this demonstration, learners will understand how to:
    - Review categories: Application Guard, Defender, BitLocker, Browser, Device Guard, Firewall, etc.
    - For demo, leave all settings at **default (recommended)** values
    - Optionally expand a few categories to show:
-     - **Microsoft Defender**: Real-time protection, cloud-delivered protection, potentially unwanted application blocking
-     - **BitLocker**: Require device encryption, recovery key storage
+     - **Defender**: Real-time protection, cloud-delivered protection, potentially unwanted application blocking
+     - **Browser**: Password Manager, Smart Screen
      - **Firewall**: Domain, private, and public profile settings
 4. Click **Next**
 
@@ -82,8 +82,7 @@ After this demonstration, learners will understand how to:
 - "You can customize if your organization needs stricter or different settings"
 - "Green checkmarks indicate settings are enabled/configured"
 
-**TODO**: Screenshot of baseline settings categories
-**TODO**: Screenshot of expanded Microsoft Defender settings
+![Baseline settings configuration](media/microsoft-intune-admin-center-create-baseline-profile-settings.png)
 
 #### Step 1.3: Assign baseline
 
@@ -101,8 +100,7 @@ After this demonstration, learners will understand how to:
 - "Deployment can take 15-30 minutes depending on number of settings"
 - "Monitor deployment status in Endpoint security → Security baselines"
 
-**TODO**: Screenshot of baseline assignments
-**TODO**: Screenshot of baseline deployment success
+![Baseline policy assignments](media/microsoft-intune-admin-center-create-baseline-profile-assignments.png)
 
 ---
 
@@ -126,7 +124,7 @@ After this demonstration, learners will understand how to:
 - "No manual onboarding package needed - completely automated"
 - "Enforcement setting allows Defender to push security configurations even to non-Intune devices"
 
-**TODO**: Screenshot of Defender connector settings
+<!-- **TODO**: Screenshot of Defender connector settings -->
 
 #### Step 2.2: Create Defender onboarding configuration profile
 
@@ -151,8 +149,9 @@ After this demonstration, learners will understand how to:
 - "Onboarding takes 5-10 minutes after policy deployment"
 - "Once onboarded, devices appear in Microsoft Defender portal"
 
-**TODO**: Screenshot of Defender onboarding configuration profile
-**TODO**: Screenshot of onboarding policy assignments
+![Defender for Endpoint onboarding profile](media/microsoft-intune-admin-center-create-configuration-profile-defender-endpoint.png)
+
+<!-- **TODO**: Screenshot of onboarding policy assignments -->
 
 #### Step 2.3: Verify onboarding in Defender portal
 
@@ -175,8 +174,8 @@ After this demonstration, learners will understand how to:
 - "Risk level is calculated based on alerts, vulnerabilities, and security configuration"
 - "This is where security teams monitor threats in real-time"
 
-**TODO**: Screenshot of Defender device inventory
-**TODO**: Screenshot of device details in Defender portal
+<!-- **TODO**: Screenshot of Defender device inventory -->
+<!-- **TODO**: Screenshot of device details in Defender portal -->
 
 ---
 
@@ -190,7 +189,7 @@ After this demonstration, learners will understand how to:
 2. Navigate to **Endpoint security** → **Attack surface reduction**
 3. Click **+ Create Policy**
 4. Select:
-   - Platform: **Windows 10, Windows 11, and Windows Server**
+   - Platform: **Windows**
    - Profile: **Attack Surface Reduction Rules**
 5. Click **Create**
 
@@ -199,7 +198,7 @@ After this demonstration, learners will understand how to:
 - "These are preventative - stop attacks before they execute"
 - "Can be set to Audit (log only) or Block (prevent execution)"
 
-**TODO**: Screenshot of ASR policy creation
+![ASR policy creation](media/microsoft-intune-admin-center-create-asr-policy-rule.png)
 
 #### Step 3.2: Configure ASR rule settings
 
@@ -223,7 +222,7 @@ After this demonstration, learners will understand how to:
 - "Script execution blocks prevent PowerShell/JavaScript-based malware"
 - "Start with Audit mode in production to test impact, then switch to Block"
 
-**TODO**: Screenshot of ASR rules configuration with rules enabled
+![ASR rules configuration](media/microsoft-intune-admin-center-create-asr-rule-settings.png)
 
 #### Step 3.3: Assign ASR policy
 
@@ -238,7 +237,7 @@ After this demonstration, learners will understand how to:
 - "Users may see toast notifications when threats are blocked"
 - "Monitor ASR effectiveness in Defender portal → Reports → Attack surface reduction"
 
-**TODO**: Screenshot of ASR policy assignments
+![ASR policy assignments](media/microsoft-intune-admin-center-create-asr-rule-assignments.png)
 
 ---
 
@@ -267,14 +266,14 @@ After this demonstration, learners will understand how to:
 - "Recommendations are prioritized by impact - fix high-impact issues first"
 - "Recommendations link back to Intune policies for remediation"
 
-**TODO**: Screenshot of Vulnerability Management dashboard
-**TODO**: Screenshot of security recommendations
+<!-- **TODO**: Screenshot of Vulnerability Management dashboard -->
+<!-- **TODO**: Screenshot of security recommendations -->
 
 #### Step 4.2: View security alerts (simulated or historical)
 
 **Action**: Show alert investigation workflow
 
-1. In Defender portal, go to **Incidents & alerts** → **Alerts**
+1. In Defender portal, go to **Investigation & response** → **Incidents & alerts** → **Alerts**
 2. If alerts exist, select one to demonstrate:
    - Alert severity: Informational, Low, Medium, High
    - Alert story: Timeline of attack
@@ -293,8 +292,8 @@ After this demonstration, learners will understand how to:
 - "Recommended actions guide response - even for junior analysts"
 - "In Module 6, we'll use Security Copilot to investigate alerts even faster"
 
-**TODO**: Screenshot of alerts queue
-**TODO**: Screenshot of alert details with investigation timeline
+<!-- **TODO**: Screenshot of alerts queue -->
+<!-- **TODO**: Screenshot of alert details with investigation timeline -->
 
 ---
 

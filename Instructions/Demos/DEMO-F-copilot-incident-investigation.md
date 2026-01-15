@@ -68,7 +68,7 @@ After this demonstration, learners will understand how to:
 - "Even junior analysts get expert-level context instantly"
 - "MITRE ATT&CK classification helps understand attacker techniques"
 
-**TODO**: Screenshot of incident with Copilot summary visible
+<!-- **TODO**: Screenshot of incident with Copilot summary visible -->
 
 #### Step 1.2: Ask clarifying questions with natural language
 
@@ -92,8 +92,8 @@ After this demonstration, learners will understand how to:
 - "MITRE ATT&CK mapping helps understand attack kill chain"
 - "Each answer leads to better questions - conversational investigation"
 
-**TODO**: Screenshot of PowerShell command question and response
-**TODO**: Screenshot of threat intel lookup response
+<!-- **TODO**: Screenshot of PowerShell command question and response -->
+<!-- **TODO**: Screenshot of threat intel lookup response -->
 
 #### Step 1.3: Analyze suspicious script
 
@@ -116,7 +116,7 @@ After this demonstration, learners will understand how to:
 - "IOCs can be used to hunt for similar threats across environment"
 - "This analysis takes Copilot 10 seconds vs. 30 minutes for skilled analyst"
 
-**TODO**: Screenshot of script analysis with decoded script and verdict
+<!-- **TODO**: Screenshot of script analysis with decoded script and verdict -->
 
 #### Step 1.4: Review guided response recommendations
 
@@ -139,7 +139,7 @@ After this demonstration, learners will understand how to:
 - "Actions can be taken directly from Copilot - one-click remediation"
 - "This guidance ensures consistent response across all analysts"
 
-**TODO**: Screenshot of guided response recommendations
+<!-- **TODO**: Screenshot of guided response recommendations -->
 
 ---
 
@@ -168,7 +168,7 @@ After this demonstration, learners will understand how to:
 - "Compliance issues explain why device was susceptible to attack"
 - "Group memberships show which policies SHOULD apply"
 
-**TODO**: Screenshot of Copilot device summary in Intune
+<!-- **TODO**: Screenshot of Copilot device summary in Intune -->
 
 #### Step 2.2: Diagnose compliance failure
 
@@ -192,7 +192,7 @@ After this demonstration, learners will understand how to:
 - "Remediation steps are actionable - IT can fix immediately"
 - "This saves 20-30 minutes of troubleshooting per device"
 
-**TODO**: Screenshot of compliance failure explanation
+<!-- **TODO**: Screenshot of compliance failure explanation -->
 
 #### Step 2.3: Compare with compliant device
 
@@ -216,7 +216,7 @@ After this demonstration, learners will understand how to:
 - "This is exactly why device was vulnerable to the credential dumping attack"
 - "Comparison feature saves enormous troubleshooting time"
 
-**TODO**: Screenshot of device comparison showing configuration differences
+<!-- **TODO**: Screenshot of device comparison showing configuration differences -->
 
 ---
 
@@ -242,7 +242,7 @@ After this demonstration, learners will understand how to:
 - "Can be exported and shared with team or saved to case management system"
 - "Report generation takes 30 seconds vs. 45 minutes manual documentation"
 
-**TODO**: Screenshot of technical investigation report
+<!-- **TODO**: Screenshot of technical investigation report -->
 
 #### Step 3.2: Create executive summary
 
@@ -262,7 +262,7 @@ After this demonstration, learners will understand how to:
 - "CISO doesn't need MITRE ATT&CK details - needs business risk assessment"
 - "Copilot adapts communication style to audience automatically"
 
-**TODO**: Screenshot of executive summary report
+<!-- **TODO**: Screenshot of executive summary report -->
 
 ---
 

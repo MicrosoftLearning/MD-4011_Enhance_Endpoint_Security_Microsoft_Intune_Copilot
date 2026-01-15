@@ -49,18 +49,12 @@ After this demonstration, learners will understand how to:
 3. In the left navigation, expand **Billing** → Select **Licenses**
 4. Review the licenses available in your tenant
 
-**Talking points**:
-- "We need licenses that include Microsoft Intune for mobile device management"
-- "E5 licenses include Intune, Defender for Endpoint, and Security Copilot capabilities"
-- "E3 licenses need EMS E5 add-on for full security features"
-- "Each device and user needs an appropriate license assigned"
-
 **What to show**:
 - Total licenses purchased vs. assigned
 - License types available: Microsoft 365 E5, EMS E5, Intune Plan 1
 - Identify which licenses include Intune (E5, EMS E5, standalone Intune)
 
-**TODO**: Screenshot of Licenses page showing available license inventory
+![Licenses page showing available license inventory](media/microsoft-365-admin-center-licenses.png)
 
 #### Step 1.2: Assign license to test user
 
@@ -74,33 +68,23 @@ After this demonstration, learners will understand how to:
 6. Verify **Microsoft Intune** is checked under included services
 7. Click **Save changes**
 
-**Talking points**:
-- "Users need licenses before they can enroll devices"
-- "The Intune service must be enabled in the license - not all M365 licenses include it"
-- "You can assign licenses individually or to groups for automation"
-- "License assignment can take 5-15 minutes to propagate fully"
-
 **What to show**:
 - License assignment UI
 - Specific Intune service toggle within the license
 - Confirmation message after assignment
 
-**TODO**: Screenshot of user license assignment showing Intune service enabled
+![User license assignment showing Intune service enabled](media/microsoft-365-admin-center-user-licenses.png)
 
 #### Step 1.3: Verify Intune subscription is active
 
 **Action**: Confirm Intune appears in tenant subscriptions
 
 1. In Microsoft 365 admin center, go to **Billing** → **Your products**
-2. Look for **Microsoft Intune** or **Enterprise Mobility + Security E5**
-3. Click on the subscription to view details
-4. Verify status shows as **Active**
 
-**Talking points**:
-- "This confirms Intune is provisioned and ready to use in our tenant"
-- "If you don't see Intune here, licenses may not include it or need to be purchased separately"
+**What to show**:
+- Active Intune subscription in the list of products
 
-**TODO**: Screenshot of subscriptions showing active Intune subscription
+![Subscriptions showing active Intune subscription](media/microsoft-365-admin-center-product-details.png)
 
 ---
 
@@ -112,7 +96,7 @@ After this demonstration, learners will understand how to:
 
 1. Open a new browser tab and navigate to **https://entra.microsoft.com**
 2. Sign in with the same admin credentials
-3. In the left navigation, expand **Identity** → Select **Devices**
+3. In the left navigation, expand **Entra ID** → Select **Devices**
 4. Select **Overview** to see current device enrollment state
 
 **Talking points**:
@@ -124,13 +108,13 @@ After this demonstration, learners will understand how to:
 - Devices overview page (likely shows zero devices if new tenant)
 - Navigation structure of Entra admin center
 
-**TODO**: Screenshot of Entra Devices overview page
+![Device overview page](media\microsoft-entra-admin-center-devices-overview.png)
 
 #### Step 2.2: Configure device settings
 
 **Action**: Set device enrollment permissions
 
-1. In **Identity** → **Devices**, select **Device settings**
+1. In **Devices**, select **Device settings**
 2. Review the following settings:
    - **Users may join devices to Azure AD**: Verify set to **All** or **Selected** (with appropriate groups)
    - **Users may register their devices with Azure AD**: Verify set to **All** or **Selected**
@@ -148,35 +132,43 @@ After this demonstration, learners will understand how to:
 - Device settings configuration options
 - Explanation of "Join" (corporate-owned, fully managed) vs. "Register" (BYOD, lighter management)
 
-**TODO**: Screenshot of Device settings page with options highlighted
+![Device settings page with options highlighted](media/microsoft-entra-admin-center-device-settings.png)
 
-#### Step 2.3: Configure automatic MDM enrollment
+#### Step 2.3: Verify MDM authority and configure automatic enrollment
 
-**Action**: Enable automatic enrollment into Intune
+**Action**: Confirm MDM authority is set and enable automatic enrollment into Intune
 
-1. In **Identity** → **Devices**, select **Enroll** → **Automatic Enrollment**
-2. Review **MDM user scope**:
+1. Open a new browser tab and navigate to **https://intune.microsoft.com**
+2. Sign in with the same admin credentials
+3. Go to **Tenant administration** → **Tenant status**
+4. Under **Tenant details**, verify **MDM authority** shows **Microsoft Intune**
+   - If you see an orange banner indicating MDM authority isn't set, select the banner and choose **Intune MDM Authority**
+   - This is typically already configured for new tenants
+5. Navigate to **Devices** > **Enrollment** → **Automatic Enrollment**
+6. Review **MDM user scope**:
    - If set to **None**: Change to **All** or **Some** (with selected groups)
    - If already configured: Review current scope
-3. Select **All** for demo purposes
-4. Review **MDM terms of use URL** (should auto-populate with Intune URL)
-5. Leave **MAM user scope** as **None** (we'll configure MAM later)
-6. Click **Save**
+7. Select **All** for demo purposes
+8. Review **MDM terms of use URL** (should auto-populate with Intune URL)
+9. Click **Save**
 
 **Talking points**:
+- "The MDM authority is automatically set to Intune when you create a new tenant or trial"
+- "We're verifying it shows Microsoft Intune as the management authority for devices"
 - "Automatic enrollment means when users join devices to Entra ID, they automatically enroll in Intune"
-- "This eliminates a manual step and ensures devices are managed immediately"
+- "This eliminates a manual step and ensures devices are managed immediately upon joining"
 - "MDM user scope controls who can auto-enroll - All users, specific groups, or none"
-- "In enterprise scenarios, you might use groups to control enrollment by department or device ownership"
+- "In production, you might scope this to pilot groups first before enabling for all users"
 
 **What to show**:
+- MDM authority value showing "Microsoft Intune" in Tenant status
+- Automatic Enrollment settings page
 - MDM user scope dropdown options
-- Automatic enrollment settings
-- Save confirmation
+- Save confirmation message
 
-**Common issue**: If Intune doesn't appear as an MDM provider, go to **Identity** → **Devices** → **Enroll** → **Mobile Device Management** and add Microsoft Intune as the MDM authority.
+**Note for instructors**: If learners encounter an orange banner about MDM authority not being set (rare in new tenants), this is the only time they need to manually configure it. Most modern Intune tenants have this pre-configured.
 
-**TODO**: Screenshot of Automatic Enrollment configuration with MDM scope set to All
+![Automatic Enrollment configuration with MDM scope set to All](media/microsoft-intune-admin-center-automatic-enrollment.png)
 
 ---
 
@@ -187,7 +179,7 @@ After this demonstration, learners will understand how to:
 **Action**: Create a dynamic group for Windows devices
 
 1. In Entra admin center, navigate to **Groups** → **All groups**
-2. Click **+ New group**
+2. Click **New group**
 3. Configure the group:
    - **Group type**: Security
    - **Group name**: `All Windows Devices`
@@ -214,13 +206,13 @@ After this demonstration, learners will understand how to:
 - Dynamic query builder
 - Query syntax for device OS type filtering
 
-**TODO**: Screenshot of dynamic group creation with query visible
+![Dynamic group creation with query visible](media/microsoft-entra-admin-center-new-dynamic-group.png)
 
 #### Step 3.2: Create a static test group
 
 **Action**: Create a manual group for pilot testing
 
-1. Click **+ New group** again
+1. Click **New group** again
 2. Configure the group:
    - **Group type**: Security
    - **Group name**: `Device Management Pilot Users`
@@ -242,7 +234,7 @@ After this demonstration, learners will understand how to:
 - Member selection process
 - Final group summary
 
-**TODO**: Screenshot of assigned group with members selected
+![Assigned group with members selected](media/microsoft-entra-admin-center-new-static-group.png)
 
 ---
 
@@ -272,7 +264,7 @@ After this demonstration, learners will understand how to:
 - Tenant status page with MDM authority highlighted
 - Clean service health (or explain any current issues)
 
-**TODO**: Screenshot of Intune tenant status page showing active status
+![Intune tenant status page showing active status](media/microsoft-intune-admin-center-tenant-status.png)
 
 ---
 
