@@ -1,11 +1,20 @@
 ---
 lab:
-    title: 'Lab 05: Harden devices with security baselines'
-    type: 'Answer Key'
-    module: 'Learning Path 05: Secure and monitor endpoints'
+  title: 'Lab 05: Harden devices with security baselines'
+  type: Answer Key
+  module: 'Learning Path 05: Secure and monitor endpoints'
+  description: Continuing as **Diego Siciliani**, Contoso Healthcare's Modern Endpoint
+    Administrator, you have successfully protected data and enforced access controls
+    in Lab 04. Now you need to harden devices against advanced threats by deploying
+    security baselines, integrating with Microsoft Defender for Endpoint, and configuring
+    proactive threat prevention.
+  duration: 45 minutes
+  level: 400
+  islab: true
+  primarytopics:
+  - Microsoft Defender
+  - Microsoft Defender for Endpoint
 ---
-
-
 
 # Lab 05: Harden devices with security baselines
 # Student lab answer key
