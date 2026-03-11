@@ -1,8 +1,17 @@
 ---
 lab:
-    title: 'Lab 03: Implement policy layering and compliance'
-    type: 'Answer Key'
-    module: 'Learning Path 03: Configure and manage device policies'
+  title: 'Lab 03: Implement policy layering and compliance'
+  type: Answer Key
+  module: 'Learning Path 03: Configure and manage device policies'
+  description: Continuing as **Diego Sicilliani**, Contoso Healthcare's Modern Endpoint
+    Administrator, you have successfully enrolled Windows devices into Intune in Lab
+    02. Now you need to implement security policies to ensure devices meet Contoso's
+    healthcare industry compliance requirements.
+  duration: 45 minutes
+  level: 300
+  islab: true
+  primarytopics:
+  - Windows
 ---
 
 # Lab 03: Implement policy layering and compliance
