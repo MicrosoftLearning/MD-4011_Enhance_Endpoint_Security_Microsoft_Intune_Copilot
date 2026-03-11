@@ -1,11 +1,19 @@
 ---
 lab:
-    title: 'Lab 04: Protect data with MAM and conditional access'
-    type: 'Answer Key'
-    module: 'Learning Path 04: Protect data and applications'
+  title: 'Lab 04: Protect data with MAM and conditional access'
+  type: Answer Key
+  module: 'Learning Path 04: Protect data and applications'
+  description: Continuing as **Diego Siciliani**, Contoso Healthcare's Modern Endpoint
+    Administrator, you have successfully configured device policies and compliance
+    in Lab 03. Now you need to protect corporate data in Microsoft 365 apps and enforce
+    access controls based on device compliance.
+  duration: 30 minutes
+  level: 300
+  islab: true
+  primarytopics:
+  - Microsoft 365
+  - Microsoft 365 Apps
 ---
-
-
 
 # Lab 04: Protect data with MAM and conditional access
 # Student lab answer key
