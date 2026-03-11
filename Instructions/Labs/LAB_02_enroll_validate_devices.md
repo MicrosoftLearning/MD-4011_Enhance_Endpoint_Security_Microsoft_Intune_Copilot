@@ -1,8 +1,17 @@
 ---
 lab:
-    title: 'Lab 02: Enroll and validate devices'
-    type: 'Answer Key'
-    module: 'Learning Path 02: Deploy and manage devices with Microsoft Intune'
+  title: 'Lab 02: Enroll and validate devices'
+  type: Answer Key
+  module: 'Learning Path 02: Deploy and manage devices with Microsoft Intune'
+  description: Continuing your role as **Diego Sicilliani**, Contoso Healthcare's
+    Modern Endpoint Administrator, you have successfully configured the Microsoft
+    365 tenant for device management in Lab 01. Now you are ready to begin enrolling
+    devices into Intune.
+  duration: 30 minutes
+  level: 300
+  islab: true
+  primarytopics:
+  - Microsoft 365
 ---
 
 # Lab 02: Enroll and validate devices
