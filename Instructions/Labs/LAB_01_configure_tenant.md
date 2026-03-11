@@ -1,8 +1,18 @@
 ---
 lab:
-    title: 'Lab 01: Configure tenant for device management'
-    type: 'Answer Key'
-    module: 'Learning Path 01: Plan and configure Microsoft Intune'
+  title: 'Lab 01: Configure tenant for device management'
+  type: Answer Key
+  module: 'Learning Path 01: Plan and configure Microsoft Intune'
+  description: In the labs for this course, you are taking on the role of **Deigo
+    Sicilliani**, Contoso Healthcare's Modern Endpoint Administrator. Contoso Healthcare
+    is a mid-sized healthcare organization that has deployed Microsoft 365 E5 and
+    is now ready to implement modern endpoint management with Microsoft Intune.
+  duration: 38 minutes
+  level: 300
+  islab: true
+  primarytopics:
+  - Microsoft 365
+  - Microsoft Intune
 ---
 
 # Lab 01: Configure tenant for device management
