@@ -248,10 +248,7 @@ In this exercise, you will create a conditional access policy that requires devi
 
     **Access controls**:
     - **Grant**: Select **Grant access**
-    - Check the following:
-        - **Require device to be marked as compliant**
-        - **Require approved client app**
-    - **For multiple controls**: Require all the selected controls
+    - Check: **Require device to be marked as compliant**
 
     **Enable policy**: Report-only (for initial testing)
 
@@ -264,19 +261,25 @@ You have successfully created a conditional access policy requiring compliant de
 
 ### Task 2 - Test conditional access policy in report-only mode
 
-1. You are still in the **Microsoft Entra admin center** → **Protection** → **Conditional Access**.
+> [!NOTE]
+> The **Insights and reporting** workbook requires a Log Analytics workspace and Security Reader role, which may not be available in this lab environment. You will use sign-in logs to verify policy behavior instead.
 
-1. Select **Insights and reporting** (or **Conditional Access Insights**).
+1. You are still in the **Microsoft Entra admin center**.
 
-1. Review the dashboard showing:
-    - **Policies in report-only mode**: Your newly created policy
-    - **Estimated impact**: Number of users affected
+1. In the left navigation pane, expand **Entra ID** → **Monitoring & health** and select **Sign-in logs**.
 
-1. Wait 15-30 minutes for data to populate (or proceed to testing in Exercise 3).
+1. After a pilot user signs in, locate their sign-in entry in the logs.
 
-1. After data is available, review the impact report to ensure the policy behaves as expected.
+1. Select the sign-in entry to view details, then select the **Conditional Access** tab.
 
-1. If satisfied, return to the policy and change **Enable policy** from **Report-only** to **On** to enforce it.
+1. Review the policy evaluation results:
+    - **Policy name**: `Require compliant device for Exchange Online`
+    - **Result**: **Report-only: Failure** or **Report-only: Success** (depending on device compliance)
+
+    > [!NOTE]
+    > In report-only mode, the policy evaluates but does not enforce. "Report-only: Failure" means the policy *would have* blocked access if enforced.
+
+1. If satisfied with the policy behavior, return to **Entra ID** → **Conditional Access** → **Policies**, select the policy, and change **Enable policy** from **Report-only** to **On** to enforce it.
 
 1. Leave the browser window open for the next exercise.
 

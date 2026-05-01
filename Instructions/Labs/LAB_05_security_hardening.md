@@ -345,7 +345,7 @@ In this exercise, you will review the security posture of your devices in the Mi
 
 1. On the **Vulnerability management** overview page, review the following metrics:
 
-    **Exposure score** (0-1000):
+    **Exposure score** (0-100):
     - Measures overall organizational exposure to vulnerabilities
     - Lower score = better security posture
     - Based on discovered vulnerabilities, attack surface, and breach likelihood

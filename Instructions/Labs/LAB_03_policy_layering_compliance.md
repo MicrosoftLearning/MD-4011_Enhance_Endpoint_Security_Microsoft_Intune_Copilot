@@ -404,7 +404,7 @@ In this exercise, you will validate that policies are applied to your enrolled d
 
 1. In the left menu, select **Manage devices** and then **Compliance**.
 
-1. Select the **Windows Compliance - Security Settings** policy.
+1. Select the **Windows Compliance - Security Requirements** policy.
 
 1. Select  **Per-setting status** under **Additional monitoring reports**.
 

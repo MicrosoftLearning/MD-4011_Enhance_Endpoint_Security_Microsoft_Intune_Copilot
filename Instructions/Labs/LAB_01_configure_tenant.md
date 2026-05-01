@@ -81,9 +81,9 @@ In this task, you will sign in with Global Administrator to review licensing.
 1. In the left navigation pane, expand **Billing** and select **Licenses**.
 
 1. Review the available licenses in your tenant. You should see the following licenses:
-    - **Enterprise Mobility + Security E5**
-    - **Office 365 E5 (no Teams)**
-    - **Windows 10/11 Enterprise E3**
+    - **Microsoft 365 E5 (no Teams)**
+    - **Microsoft Power Apps for Developer**
+    - **Microsoft Teams Enterprise**
 
 1. Note the **Total licenses** and **Available licenses** for each subscription.
 
@@ -115,13 +115,13 @@ In this task, you will verify that Intune/EMS licenses are already assigned to t
 1. In the user details pane, select **Licenses and apps**.
 
 1. Verify that Alex Wilber has **all three** of the following licenses assigned:
-    - ✅ **Enterprise Mobility + Security E5**
-    - ✅ **Office 365 E5 (no Teams)**
-    - ✅ **Windows 10/11 Enterprise E3**
+    - ✅ **Microsoft 365 E5 (no Teams)**
+    - ✅ **Microsoft Power Apps for Developer**
+    - ✅ **Microsoft Teams Enterprise**
 
-1. Expand the **Enterprise Mobility + Security E5** license details and verify the following services are enabled:
+1. Expand the **Microsoft 365 E5 (no Teams)** license details and verify the following services are enabled:
     - ✅ **Microsoft Intune**
-    - ✅ **Azure Active Directory Premium P2** (now called Microsoft Entra ID Premium P2)
+    - ✅ **Microsoft Entra ID P2**
 
 1. Close the user details pane.
 
@@ -156,7 +156,7 @@ You are now ready to assign administrative roles.
 
 In this task, you will assign the necessary Intune and security administrative roles to Diego Siciliani.
 
-1. In the **Microsoft Entra admin center**, expand **Identity** and select **Users** → **All users**.
+1. In the **Microsoft Entra admin center**, expand **Entra ID** and select **Users** → **All users**.
 
 1. In the user list, search for and select **Diego Siciliani**.
 
@@ -242,7 +242,7 @@ In this task, you will configure Entra ID to allow users to join and register th
 
 1. If needed, navigate to [**https://entra.microsoft.com**](https://entra.microsoft.com/).
 
-1. In the left navigation pane, expand **Identity** → **Devices** and select **Overview**.
+1. In the left navigation pane, expand **Entra ID** → **Devices** and select **Overview**.
 
 1. Review the current device statistics (you will see 0 devices at this point).
 
@@ -256,7 +256,8 @@ In this task, you will configure Entra ID to allow users to join and register th
     | **Users may register their devices with Microsoft Entra** | **All** |
     | **Require Multi-Factor Authentication to register or join devices with Microsoft Entra** | **No** (for lab purposes; enable in production) |
     | **Maximum number of devices per user** | **50** (default; adjust based on your requirements) |
-    | **Local administrator setting** | **None** (default; can enable for specific scenarios) |
+    | **Global administrator role is added as local administrator on the device during Microsoft Entra join** | **Yes** (default) |
+    | **Registering user is added as local administrator on the device during Microsoft Entra join** | **All** (default) |
 
     > [!TIP]
     > In a production environment, you would typically restrict device join/registration to specific groups and require MFA for enhanced security.
@@ -288,7 +289,7 @@ In this task, you will create a static security group for the four pilot users w
 
 1. If needed, navigate to [**https://entra.microsoft.com**](https://entra.microsoft.com/).
 
-1. In the left navigation pane, expand **Identity** → **Groups** and select **All groups**.
+1. In the left navigation pane, expand **Entra ID** → **Groups** and select **All groups**.
 
 1. At the top of the page, select **New group**.
 
@@ -325,7 +326,7 @@ In this task, you will create a dynamic device group that automatically includes
 
 1. You are still in the **Microsoft Entra admin center** as **Diego Siciliani**.
 
-1. In the left navigation pane, expand **Identity** → **Groups** and select **All groups**.
+1. In the left navigation pane, expand **Entra ID** → **Groups** and select **All groups**.
 
 1. At the top of the **All groups** page, select **New group**.
 
