@@ -61,7 +61,7 @@ You have just started the pilot project. In this first lab, you will prepare the
 
   - **Estimated Time to complete**: 10 minutes
 
-In this exercise, you will verify that the Microsoft 365 tenant has the appropriate licenses for Intune device management and confirm that licenses are already assigned to the four pilot users who will participate in testing throughout all labs.
+In this exercise, you will verify that the Microsoft 365 tenant has the appropriate licenses for Intune device management, start Microsoft Defender for Endpoint provisioning, and confirm that licenses are already assigned to the four pilot users who will participate in testing throughout all labs.
 
 > [!NOTE]
 > You will use **Global Administrator** credentials for this exercise to access billing and licensing information. After verifying licenses, you will assign administrative roles to Diego Siciliani in Exercise 2.
@@ -80,10 +80,13 @@ In this task, you will sign in with Global Administrator to review licensing.
 
 1. In the left navigation pane, expand **Billing** and select **Licenses**.
 
-1. Review the available licenses in your tenant. You should see the following licenses:
-    - **Microsoft 365 E5 (no Teams)**
-    - **Microsoft Power Apps for Developer**
-    - **Microsoft Teams Enterprise**
+1. Review the available licenses in your tenant. Verify that the tenant has **Microsoft 365 E5 (no Teams)** or another subscription that provides the following services used in these labs:
+    - **Microsoft Intune**
+    - **Microsoft Entra ID P2**
+    - **Microsoft Defender for Endpoint Plan 2**
+
+    > [!NOTE]
+    > Your lab tenant may include other subscriptions, such as Microsoft Teams or Power Apps. Those subscriptions aren't required to complete these endpoint-management labs.
 
 1. Note the **Total licenses** and **Available licenses** for each subscription.
 
@@ -91,7 +94,26 @@ In this task, you will sign in with Global Administrator to review licensing.
 
 You have successfully reviewed the licensing status of your Microsoft 365 tenant and confirmed Intune licensing is available.
 
-### Task 2 - Verify licenses are assigned to pilot users
+### Task 2 - Start Microsoft Defender for Endpoint provisioning
+
+In this task, you will open Microsoft Defender for Endpoint as early as possible so that tenant provisioning can continue while you complete the remaining Lab 01 exercises.
+
+1. Open a new browser tab and navigate to the **Microsoft Defender portal** at [**https://security.microsoft.com**](https://security.microsoft.com/).
+
+1. If prompted, sign in with the same **Global Administrator** account.
+
+1. In the left navigation pane, expand **Endpoints** and select **Device inventory**. If your portal shows the consolidated navigation, use **Assets** → **Devices** instead. Opening the device inventory starts Defender for Endpoint provisioning if this is the tenant's first visit.
+
+1. If a welcome or setup page appears, select the option to start using Microsoft Defender for Endpoint and complete the displayed prompts.
+
+1. If **Device inventory** displays a loading indicator or provisioning message, leave this browser tab open. Don't wait here; return to the Microsoft 365 admin center and continue with Task 3 while provisioning runs.
+
+    > [!NOTE]
+    > Defender provisioning commonly finishes within several minutes but can take longer. You will return to this tab and verify readiness near the end of Lab 01.
+
+You have started Microsoft Defender for Endpoint provisioning without delaying the remaining tenant-configuration work.
+
+### Task 3 - Verify licenses are assigned to pilot users
 
 In this task, you will verify that Intune/EMS licenses are already assigned to the four specific users who will participate in the device management pilot.
 
@@ -114,19 +136,17 @@ In this task, you will verify that Intune/EMS licenses are already assigned to t
 
 1. In the user details pane, select **Licenses and apps**.
 
-1. Verify that Alex Wilber has **all three** of the following licenses assigned:
-    - ✅ **Microsoft 365 E5 (no Teams)**
-    - ✅ **Microsoft Power Apps for Developer**
-    - ✅ **Microsoft Teams Enterprise**
+1. Verify that Alex Wilber has **Microsoft 365 E5 (no Teams)** or another license that provides the required Intune services.
 
-1. Expand the **Microsoft 365 E5 (no Teams)** license details and verify the following services are enabled:
+1. Expand the assigned license details and verify the following services are enabled:
     - ✅ **Microsoft Intune**
     - ✅ **Microsoft Entra ID P2**
+    - ✅ **Microsoft Defender for Endpoint Plan 2**
 
 1. Close the user details pane.
 
     > [!NOTE]
-    > All four pilot users should have the same three licenses assigned. If any user is missing licenses, notify your instructor.
+    > All four pilot users should have access to the required services. If a required service isn't enabled for a pilot user, notify your instructor.
 
 1. Leave the browser window open for the next exercise.
 
@@ -465,46 +485,32 @@ In this task, you will verify the Intune subscription is active.
 
 You have successfully verified that the Intune subscription is active and working.
 
-## Exercise 7: Initialize Microsoft Defender for Endpoint
+## Exercise 7: Complete Microsoft Defender for Endpoint integration
 
 ### Exercise Duration
 
   - **Estimated Time to complete**: 8 minutes
 
-In this exercise, you will initialize Microsoft Defender for Endpoint in your tenant. This is a prerequisite for connecting Defender for Endpoint to Intune in Lab 05, and completing it now prevents interruptions during later security configuration labs.
+In this exercise, you will verify the Microsoft Defender for Endpoint provisioning that you started in Exercise 1 and connect Defender for Endpoint to Intune. This is a prerequisite for Lab 05.
 
-### Task 1 - Initialize Defender for Endpoint portal
+### Task 1 - Verify Defender for Endpoint readiness
 
-In this task, you will access the Microsoft Defender portal for the first time to trigger tenant provisioning.
+In this task, you will confirm that Defender for Endpoint finished provisioning while you completed the other Lab 01 exercises.
 
-1. Open a new browser tab and navigate to the **Microsoft Defender portal** at [**https://security.microsoft.com**](https://security.microsoft.com/).
+1. Return to the **Microsoft Defender portal** tab that you opened in Exercise 1, or navigate to [**https://security.microsoft.com**](https://security.microsoft.com/).
 
 1. Sign in with **Diego Siciliani's** credentials if prompted.
 
-1. If you see a **Welcome to Microsoft Defender for Endpoint** screen or setup wizard:
-    - Review the welcome message
-    - Select **Start using Microsoft Defender for Endpoint** (or similar button)
-    - Follow any prompts to complete the initial setup
+1. In the left navigation pane, expand **Endpoints** and select **Device inventory**. If your portal shows the consolidated navigation, use **Assets** → **Devices** instead.
 
-1. Wait a few moments while the portal initializes. You should see the main Defender dashboard load with sections for:
-    - **Incidents & alerts**
-    - **Assets** (Devices, Identities, Apps)
-    - **Exposure management**
-    - **Threat intelligence**
+1. Wait for the loading indicator to disappear. Readiness is confirmed when **Device inventory** opens without a provisioning message or service error. An empty inventory is expected because devices aren't onboarded until Lab 05.
 
-    > [!NOTE]
-    > The portal will show empty dashboards at this point since no devices are onboarded yet. This is expected.
-
-1. In the left navigation pane, expand **Assets** and select **Devices**.
-
-1. You should see an empty **Device inventory** page with the message "No devices onboarded yet."
-
-    > [!NOTE]
-    > This confirms the Defender for Endpoint service is provisioned and ready. You will onboard devices in Lab 05 after deploying security baselines.
+    > [!IMPORTANT]
+    > If Defender for Endpoint is still provisioning, continue waiting and refresh the page periodically. Allow up to **two hours from when you started provisioning in Exercise 1**. If **Device inventory** still doesn't load, or the portal displays **Something went wrong**, stop and contact lab support. Some tenant provisioning failures require service-side escalation.
 
 1. Leave this browser tab open for the next task.
 
-You have successfully initialized Microsoft Defender for Endpoint in your tenant.
+You have confirmed that Microsoft Defender for Endpoint is provisioned and ready.
 
 ### Task 2 - Enable Microsoft Intune connection in Defender portal
 
@@ -512,7 +518,7 @@ In this task, you will enable the bidirectional connection between Defender for 
 
 1. You are still in the **Microsoft Defender portal** at [**https://security.microsoft.com**](https://security.microsoft.com/).
 
-1. In the left navigation pane (at the bottom), select the **Settings** gear icon, or navigate to **Settings**.
+1. In the left navigation pane, expand **System** and select **Settings**.
 
 1. On the **Settings** page, select **Endpoints** from the left menu.
 
@@ -539,25 +545,21 @@ In this task, you will verify that the Defender for Endpoint connector in Intune
 
 1. Return to the **Microsoft Intune admin center** tab where you are signed in as **Diego Siciliani**.
 
-1. In the left navigation pane, expand **Tenant administration** and select **Connectors and tokens**.
+1. In the left navigation pane, expand **Endpoint security** and select **Defender for Endpoint**.
 
-1. On the **Connectors and tokens** page, locate **Microsoft Defender for Endpoint** and select it.
-
-1. On the **Microsoft Defender for Endpoint** connector page, verify that:
-    - **Connection status** shows "Not set up" (this is expected - we'll configure the connection in Lab 05)
-    - The toggle switches for **Windows**, **Android**, and **iOS** device connections are now **enabled** (not grayed out)
+1. On the **Defender for Endpoint** page, verify that **Connection status** shows **Enabled**.
 
     > [!IMPORTANT]
-    > If the toggles are still grayed out, wait 5 minutes and refresh the page. The Defender for Endpoint service may still be provisioning.
+    > The connection status can take up to **15 minutes** to update after you save the Intune connection setting in Defender. If it isn't enabled yet, wait and refresh the page.
 
     > [!NOTE]
-    > The connection is now ready from both sides: you enabled the "Microsoft Intune connection" in Defender portal, and the Intune connector toggles are enabled. In Lab 05, you'll complete the configuration by turning on these toggles and creating the onboarding profile.
+    > The service-to-service connection is now ready. In Lab 05, you'll configure the Windows integration settings and deploy an onboarding policy.
 
 1. **Do not configure any settings yet** - you will complete the connector configuration in Lab 05.
 
 1. Close this page and return to the Intune dashboard.
 
-You have successfully verified that Microsoft Defender for Endpoint is initialized and the bidirectional connection with Intune is ready. The connector will be fully configured in Lab 05 when you deploy security baselines.
+You have successfully verified that Microsoft Defender for Endpoint is provisioned and its connection with Intune is ready. The Windows integration settings will be configured in Lab 05.
 
 ## Lab Completion
 
@@ -576,9 +578,9 @@ In this lab, you:
 - ✅ Created a dynamic device group for all Windows devices
 - ✅ Enabled automatic enrollment in Intune for the pilot users group
 - ✅ Verified Intune tenant status and MDM authority
-- ✅ Initialized Microsoft Defender for Endpoint portal
+- ✅ Started Microsoft Defender for Endpoint provisioning early and verified readiness
 - ✅ Enabled Microsoft Intune connection in Defender portal (bidirectional integration)
-- ✅ Verified Intune connector toggles are enabled and ready for configuration
+- ✅ Verified that the Defender for Endpoint connection status in Intune is enabled
 - ✅ Confirmed all configurations are in place for device enrollment
 
 > [!IMPORTANT]

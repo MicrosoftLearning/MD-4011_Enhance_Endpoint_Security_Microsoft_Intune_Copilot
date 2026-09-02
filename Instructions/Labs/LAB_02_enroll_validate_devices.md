@@ -50,7 +50,9 @@ In this exercise, you will join a Windows 11 device to Entra ID, which will auto
 
 In this task, you will connect your Windows device to your work or school account using Entra join.
 
-1. On your **Windows 11 device**, open **Settings** by pressing **Windows key + I** (or right-click Start and select **Settings**).
+1. In the lab interface, open **SEA-WS1** and confirm that you are working in that workstation before continuing.
+
+1. On **SEA-WS1**, open **Settings** by pressing **Windows key + I** (or right-click Start and select **Settings**).
 
 1. In the Settings app, select **Accounts** from the left navigation pane.
 
@@ -63,7 +65,7 @@ In this task, you will connect your Windows device to your work or school accoun
 1. On the **Set up a work or school account** window, enter **Alex Wilber's email address**: `AlexW@yourtenant.onmicrosoft.com`
 
     > [!IMPORTANT]
-    > Use Alex Wilber for the first device (SEA-WS1). You will use Allan Deyoung for the second device in Exercise 5.
+    > Use Alex Wilber for the first device (SEA-WS1). You will use Allan Deyoung for the second device in Exercise 3.
 
 1. Select **Next**.
 
@@ -171,7 +173,9 @@ In this exercise, you will enroll a second Windows 11 device (SEA-WS2) into Intu
 
 In this task, you will join the second workstation to Entra ID using **Allan Deyoung's** account.
 
-1. On your **second Windows 11 device (SEA-WS2)**, open **Settings** by pressing **Windows key + I**.
+1. In the lab interface, switch from **SEA-WS1** to **SEA-WS2** using the available resource selector, workstation tab, or virtual-machine list. Confirm that **SEA-WS2** is selected.
+
+1. On **SEA-WS2**, open **Settings** by pressing **Windows key + I**.
 
 1. In the Settings app, select **Accounts** from the left navigation pane.
 
@@ -210,6 +214,8 @@ You have successfully enrolled SEA-WS2 with Allan Deyoung's account. You now hav
 ### Task 2 - Verify both devices in Intune admin center
 
 In this task, you will confirm both devices appear in the Intune device inventory.
+
+1. In the lab interface, switch back to **SEA-WS1** and confirm that workstation is selected.
 
 1. On **SEA-WS1**, navigate to the **Microsoft Intune admin center** at [**https://intune.microsoft.com**](https://intune.microsoft.com/).
 

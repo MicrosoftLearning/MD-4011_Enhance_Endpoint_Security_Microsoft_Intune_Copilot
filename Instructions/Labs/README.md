@@ -87,6 +87,12 @@ Before starting Lab 01, ensure you have:
 > [!TIP]
 > **Save your progress**: Take screenshots of key configurations and note down group names, policy names, and settings as you progress through the labs. You'll reference these in later labs.
 
+### Switching between lab workstations
+
+Some exercises use two hosted Windows workstations: **SEA-WS1** and **SEA-WS2**. When an instruction tells you to switch workstations, use your lab environment's resource selector, workstation tabs, or virtual-machine list to open the named workstation. The exact control varies by lab provider.
+
+Before continuing after a switch, confirm the workstation name shown by the lab interface or Windows. Keep both workstation sessions running unless an exercise explicitly tells you to sign out or shut one down.
+
 ## Lab Delivery Modes
 
 These labs support multiple delivery approaches:
