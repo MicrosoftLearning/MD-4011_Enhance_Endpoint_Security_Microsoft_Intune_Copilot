@@ -318,7 +318,9 @@ You have successfully tested the app protection policy on a mobile device.
 
 ### Task 2 - Test conditional access policy on compliant device (SEA-WS1)
 
-1. On your **SEA-WS1** (corporate-owned, compliant device from Lab 03), open **Microsoft Edge**.
+1. In the lab interface, open **SEA-WS1** using the available resource selector, workstation tab, or virtual-machine list. Confirm that **SEA-WS1** is selected.
+
+1. On **SEA-WS1** (corporate-owned, compliant device from Lab 03), open **Microsoft Edge**.
 
 1. Navigate to **Outlook on the web**: [**https://outlook.office.com**](https://outlook.office.com).
 
@@ -342,7 +344,9 @@ You have successfully accessed Outlook on a compliant device.
 
 In this task, you will test the conditional access policy using SEA-WS2, which should be blocked if it's not compliant.
 
-1. On your **SEA-WS2** (personal device), open **Microsoft Edge**.
+1. In the lab interface, switch from **SEA-WS1** to **SEA-WS2** and confirm that **SEA-WS2** is selected.
+
+1. On **SEA-WS2** (personal device), open **Microsoft Edge**.
 
 1. Navigate to **Outlook on the web**: [**https://outlook.office.com**](https://outlook.office.com).
 
@@ -422,7 +426,7 @@ In this lab, you:
 ### Next steps
 
 In **Lab 05: Harden devices with security baselines**, you will:
-- Deploy Windows security baselines to enforce 100+ security settings
+- Deploy the current Windows security baseline with Microsoft-recommended settings
 - Onboard devices to Microsoft Defender for Endpoint
 - Configure Attack Surface Reduction (ASR) rules
 - Monitor security posture and vulnerabilities

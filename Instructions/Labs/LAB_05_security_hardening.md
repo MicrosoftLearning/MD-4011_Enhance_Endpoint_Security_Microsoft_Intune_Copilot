@@ -22,7 +22,7 @@ lab:
 
 Continuing as **Diego Siciliani**, Contoso Healthcare's Modern Endpoint Administrator, you have successfully protected data and enforced access controls in Lab 04. Now you need to harden devices against advanced threats by deploying security baselines, integrating with Microsoft Defender for Endpoint, and configuring proactive threat prevention.
 
-In this lab, you will deploy the Windows 11 security baseline to enforce 100+ recommended security settings, onboard enrolled devices to Defender for Endpoint for advanced threat detection and response, configure ASR rules to block credential theft and malicious scripts, and monitor device security posture and vulnerabilities through the Defender portal.
+In this lab, you will deploy the current Windows security baseline to apply Microsoft-recommended Windows settings, onboard enrolled devices to Defender for Endpoint for advanced threat detection and response, configure ASR rules to block credential theft and malicious scripts, and monitor device security posture and vulnerabilities through the Defender portal.
 
 ## Lab Duration
 
@@ -68,43 +68,27 @@ In this exercise, you will deploy the Windows security baseline to enforce Micro
 
 1. Select **Security Baseline for Windows 10 and later**.
 
+    > [!NOTE]
+    > Despite its display name, this is the current Windows security baseline for eligible Windows 10 and Windows 11 devices. Intune updates baseline versions as recommendations and supported settings change.
+
 1. Select **+ Create policy**. On the flyout, select **Create**.
 
 1. On the **Basics** page:
     - **Name**: `Windows 11 Security Baseline - Corporate Devices`
-    - **Description**: `Microsoft-recommended security baseline with 100+ security settings for Windows 11 devices`
+    - **Description**: `Current Microsoft-recommended Windows security baseline for corporate devices`
 
 1. Select **Next**.
 
-1. On the **Configuration settings** page, you will see multiple categories of security settings. The most important categories include:
-    - **Administrative Templates** (includes Network, System, Windows Components subcategories)
-    - **Defender** (antivirus and threat protection)
-    - **Device Guard** (code integrity and virtualization-based security)
-    - **Device Lock** (password and authentication policies)
-    - **Firewall** (network protection rules)
-    - **Local Policies Security Options** (authentication and account policies)
-    - **Smart Screen** (phishing and malware protection)
-    - **User Rights Assignment** (privilege management)
+1. On the **Configuration settings** page, review the settings included in the current baseline version. Use the **Search** box to explore these security areas:
+    - Search for `Defender` to find antivirus and network-protection settings.
+    - Search for `Credential Guard` or `virtualization` to find hardware-backed protection settings included in this baseline version.
+    - Search for `BitLocker` to find drive-encryption settings.
+    - Search for `Firewall` to find Windows Firewall settings.
 
     > [!NOTE]
-    > The security baseline contains 100+ pre-configured settings based on Microsoft security team recommendations. Most settings should be left at their default (recommended) values.
+    > Baseline categories, setting names, and recommended defaults can change between versions. A search might return no result if a setting was renamed, moved to another policy type, or retired. Review the settings that are present rather than looking for a fixed count or an exact category layout.
 
-1. Expand the **Defender** category to review specific Microsoft Defender settings:
-    - **Cloud Extended Timeout**: `50` seconds (allows more time for cloud-based threat analysis)
-    - **Enable Network Protection**: `Enabled (block mode)` (blocks malicious network connections)
-    - **PUA Protection**: `Enabled` (detects potentially unwanted applications)
-    - **Real Time Scan Direction**: `Monitor all files (bi-directional)`
-    - **Submit Samples Consent**: `Send all samples automatically` (for threat analysis)
-
-1. Collapse **Defender** and expand **Device Guard** to review:
-    - **Credential Guard**: `Enabled with UEFI lock` (protects domain credentials)
-    - **Enable Virtualization Based Security**: `Enabled` (hardware-based security features)
-
-1. Collapse **Device Guard** and expand **Administrative Templates** → **Windows Components** → **BitLocker Drive Encryption** → **Removable Data Drives**:
-    - **Deny write access to removable drives not protected by BitLocker**: `Enabled` (enforces encryption on USB drives)
-
-    > [!TIP]
-    > Notice how settings are organized hierarchically: Administrative Templates contains Windows Components, which contains BitLocker subcategories. Intune automatically configures all these settings to Microsoft-recommended values.
+1. Select several search results and review their current default values and setting insights. Don't change the defaults for this lab.
 
 1. Review any other categories of interest, then leave all settings at their **default (recommended)** values unless you have specific organizational requirements.
 
@@ -135,7 +119,7 @@ You have successfully deployed the Windows security baseline to your enrolled de
     - **Assignment status**: Number of assigned devices
 
     > [!NOTE]
-    > Baseline deployment can take several hours as devices sync and apply 100+ settings. Status may show "Pending" initially.
+    > Baseline deployment can take several hours as devices sync and apply the settings in the current baseline version. Status may show "Pending" initially.
 
 1. Select **Device status** in the left menu to view per-device deployment results.
 
@@ -155,14 +139,12 @@ In this exercise, you will configure the Microsoft Defender for Endpoint connect
 
 1. You are in the **Microsoft Intune admin center**.
 
-1. In the left navigation pane, expand **Tenant administration** and select **Connectors and tokens**.
+1. In the left navigation pane, expand **Endpoint security** and select **Defender for Endpoint**.
 
-1. On the **Connectors and tokens** page, locate **Microsoft Defender for Endpoint** and select it.
-
-1. On the **Microsoft Defender for Endpoint** connector page, you'll see **Connection status: Not set up**.
+1. On the **Defender for Endpoint** page, verify that **Connection status** shows **Enabled**.
 
     > [!NOTE]
-    > In Lab 01, you initialized Microsoft Defender for Endpoint and enabled the bidirectional connection between Defender and Intune. The connector toggles should now be enabled (not grayed out). If any toggles are still grayed out, wait a few minutes and refresh the page.
+    > In Lab 01, you provisioned Microsoft Defender for Endpoint and enabled the service-to-service connection. If the connection isn't enabled, return to Lab 01 and complete the readiness checks before continuing.
 
 1. Configure the following settings:
 
@@ -182,49 +164,24 @@ In this exercise, you will configure the Microsoft Defender for Endpoint connect
 
 1. Leave the browser window open for the next task.
 
-### Task 2 - Create Defender for Endpoint onboarding profile
+### Task 2 - Deploy the Defender for Endpoint onboarding policy
 
 1. You are in the **Microsoft Intune admin center**.
 
-1. In the left navigation pane, expand **Devices** and select **Configuration**.
+1. In the left navigation pane, expand **Endpoint security** and select **Endpoint detection and response**.
 
-1. Select the **Policies** tab.
+1. Select the **EDR Onboarding Status** tab.
 
-1. Select **+ Create** → **+ New policy**.
+1. Select **Deploy preconfigured policy**.
 
-1. On the **Create a profile** pane:
-    - **Platform**: Windows 10 and later
-    - **Profile type**: Templates
-    - **Template name**: Select **Microsoft Defender for Endpoint**
-
-1. Select **Create**.
-
-1. On the **Basics** page:
+1. Configure the policy:
+    - **Platform**: **Windows**
+    - **Profile**: **Endpoint detection and response**
     - **Name**: `Defender for Endpoint Onboarding - Windows`
-    - **Description**: `Onboards Windows devices to Microsoft Defender for Endpoint for advanced threat protection`
 
-1. Select **Next**.
+1. Review the preconfigured policy and select **Save**. This policy uses the onboarding package supplied by the Defender connector and deploys to all Windows devices.
 
-1. On the **Configuration settings** page:
-    - **Microsoft Defender for Endpoint client configuration package type**: **Onboard**
-    - **Onboarding blob**: This field should auto-populate with the onboarding package from Defender. If blank, wait a moment and refresh.
-
-    > [!NOTE]
-    > The onboarding blob is automatically retrieved from the Defender for Endpoint tenant once the connector is enabled.
-
-1. Select **Next**.
-
-1. On the **Assignments** page, under **Included groups**, select **+ Add groups**.
-
-1. Select **All Windows Devices**.
-
-1. Select **Select**.
-
-1. Select **Next** through **Scope tags** (leave default).
-
-1. On the **Review + create** page, review and select **Create**.
-
-You have successfully created the Defender for Endpoint onboarding profile.
+You have successfully deployed the preconfigured Defender for Endpoint onboarding policy.
 
 ### Task 3 - Verify device onboarding in Defender portal
 
@@ -232,7 +189,7 @@ You have successfully created the Defender for Endpoint onboarding profile.
 
 1. Sign in with your **Security Administrator** or **Global Administrator** credentials.
 
-1. In the left navigation pane, expand **Assets** and select **Devices**.
+1. In the left navigation pane, expand **Endpoints** and select **Device inventory**. If your portal shows the consolidated navigation, use **Assets** → **Devices** instead.
 
 1. On the **Device inventory** page, wait 5-15 minutes for your enrolled devices to appear after the onboarding policy is applied.
 
@@ -241,14 +198,14 @@ You have successfully created the Defender for Endpoint onboarding profile.
 
 1. Once your devices appear, you should see both **SEA-WS1** and **SEA-WS2** in the inventory.
 
-1. Select **SEA-WS1** to view details:
-    - **Onboarding status**: Active ✅
-    - **Risk level**: Low, Medium, High (based on detected threats)
-    - **Sensor health**: Active, Inactive, Misconfigured
-    - **Last seen**: Timestamp of most recent check-in
-    - **Threat detections**: Number of active alerts
+1. Select **SEA-WS1** to view details and confirm the current equivalents of:
+    - **Onboarding status**: Onboarded
+    - **Health state**: Active
+    - **Risk level**: Current assessed risk
+    - **Last seen**: Recent timestamp
+    - **Active alerts**: Current alert count
 
-1. Review the device details page showing:
+1. Review the available device details, which can include:
     - **Timeline**: Security events and activities
     - **Security recommendations**: Actions to improve device security
     - **Installed software**: Detected applications
@@ -391,7 +348,7 @@ In this exercise, you will review the security posture of your devices in the Mi
 
 1. You are still in the **Microsoft Defender portal**.
 
-1. In the left navigation pane, expand **Incidents & alerts** and select **Alerts**.
+1. In the left navigation pane, expand **Investigation & response** → **Incidents & alerts**, and select **Alerts**.
 
 1. On the **Alerts** page, review any security alerts detected on your devices:
     - **Severity**: Informational, Low, Medium, High, Critical
@@ -416,10 +373,10 @@ Congratulations! You have successfully completed Lab 05: Harden devices with sec
 ### Summary of what you accomplished
 
 In this lab, you:
-- ✅ Deployed Windows security baseline with 100+ Microsoft-recommended security settings
+- ✅ Deployed the current Windows security baseline with Microsoft-recommended settings
 - ✅ Monitored security baseline deployment status across devices
 - ✅ Configured Microsoft Defender for Endpoint connector in Intune
-- ✅ Created Defender for Endpoint onboarding profile to onboard Windows devices
+- ✅ Deployed the preconfigured Defender for Endpoint onboarding policy for Windows devices
 - ✅ Verified both SEA-WS1 and SEA-WS2 onboarding in the Defender portal
 - ✅ Compared security posture across multiple devices
 - ✅ Configured ASR rules to block credential theft, Office macros, script execution, and ransomware
