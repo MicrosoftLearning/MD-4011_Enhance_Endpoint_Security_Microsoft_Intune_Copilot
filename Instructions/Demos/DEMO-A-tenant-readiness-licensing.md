@@ -108,7 +108,7 @@ After this demonstration, learners will understand how to:
 - Devices overview page (likely shows zero devices if new tenant)
 - Navigation structure of Entra admin center
 
-![Device overview page](media\microsoft-entra-admin-center-devices-overview.png)
+![Device overview page](media/microsoft-entra-admin-center-devices-overview.png)
 
 #### Step 2.2: Configure device settings
 
