@@ -1,0 +1,16 @@
+github_repo: MicrosoftLearning/MD-4011_Enhance_Endpoint_Security_Microsoft_Intune_Copilot
+default_branch: main
+getting_started: Instructions/Labs/00-getting-started.md
+intro: These hands-on labs give you practice preparing a tenant for Microsoft Intune, enrolling devices, layering policies, protecting data with app protection and Conditional Access, and hardening endpoints with security baselines and Microsoft Defender for Endpoint. They complement course MD-4011 on Microsoft Learn.
+start_prompt: Read about the lab workstations, the accounts you use, and how the labs build on each other.
+totals_note: Complete the labs in order. Each lab builds on the one before it.
+sections:
+  - id: labs
+    title: Labs
+    item_label: Lab
+    glob: Instructions/Labs/LAB_*.md
+    front_matter_key: lab
+    groups:
+      - title: Enhance endpoint security with Microsoft Intune and Microsoft Security Copilot
+        match: Module
+        learn_url: https://learn.microsoft.com/training/paths/enhance-endpoint-security-microsoft-intune-copilot/
