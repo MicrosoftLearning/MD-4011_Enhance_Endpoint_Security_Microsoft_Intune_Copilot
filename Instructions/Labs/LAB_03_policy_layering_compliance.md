@@ -310,7 +310,7 @@ In this exercise, you will create a filter to target policies to specific device
 
 1. The rule syntax should display: `(device.deviceOwnership -eq "Corporate")`
 
-1. (Optional) Select **Preview devices** to see which devices match this filter, and you'll notice the list includes SEA-WS1 and SEA-WS2. Windows computers joined to Entra are assumed to be Corporate owned. Close the preview window.
+1. (Optional) Select **Preview devices** to see which devices match this filter, and you'll notice the list includes SEA-WS1 and SEA-WS2. Windows computers joined to Entra default to Corporate owned, registered devices default to Personal owned. Close the preview window.
 
 1. Select **Next**.
 
