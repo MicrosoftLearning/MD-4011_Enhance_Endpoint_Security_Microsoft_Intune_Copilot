@@ -83,8 +83,8 @@ In this exercise, you will create a configuration profile using the Settings Cat
 1. Select **Close** to return to the configuration settings page.
 
 1. Configure the selected settings:
-    - **Require Device Encryption**: Yes
-    - **Minimum PIN Length**: 6
+    - **Require Device Encryption**: Enabled
+    - **Minimum PIN Length**: `6`
 
 1. Select **Next** and skip the **Scope tags** page.
 
@@ -104,14 +104,15 @@ You have successfully created a configuration profile to enforce BitLocker encry
 
 1. Select the **Windows Security Settings - Corporate Devices** profile you just created (Choose **Refresh** if it doesn't show right away).
 
-1. On the profile overview page, review the deployment status:
-    - **Assignment status**: Shows how many devices the policy is assigned to
-    - **Device status**: Success, Pending, Error, Not applicable
+1. On the profile overview page note the **Device and user check-in status**.
+    - Succeeded, Error, Conflict, Not applicable, In Progress
+
+1. Select **Device assignment status** and then select **Generate report** and note the summary row and the per-device deployment status.
 
     > [!NOTE]
-    > Initial status may show "Pending" as devices have not yet checked in. Policy deployment can take 8 hours for the scheduled sync, or you can manually sync devices.
+    > Initial status may show nothing or "Pending" as devices have not yet checked in. Policy deployment can take 8 hours for the scheduled sync, or you can manually sync devices. If nothing is showing wait a minute and then select **Generate again**.
 
-1. Select **Device status** in the left menu to see per-device deployment status.
+1. Close the report (**X** at the upper-right).
 
 1. Leave the browser window open for the next exercise.
 
@@ -154,6 +155,7 @@ In this task, you will create notification message templates that will be sent t
     
     For assistance, contact IT Support.
     ```
+    - **Set to default locale**: switch On
 
 1. Select **Save** and then **Next**.
 
@@ -207,19 +209,19 @@ You have successfully created notification message templates for compliance acti
     - **Code integrity**: Not configured
 
     **Device Properties**:
-    - **Minimum OS version**: 10.0.19041 (Windows 10 20H1 or Windows 11)
+    - **Minimum OS version**: `10.0.19041` (Windows 10 20H1 or Windows 11)
 
     **System Security**:
     - **Require a password to unlock mobile devices**: Require
     - **Simple passwords**: Block
     - **Password type**: Alphanumeric
     - **Password complexity**: require digits, lowercase, uppercase, and special characters
-    - **Minimum password length**: 8
+    - **Minimum password length**: `8`
     - **Maximum minutes of inactivity before password is required**: 15
-    - **Password expiration (days)**: 90
-    - **Number of previous passwords to prevent reuse**: 5
-    - **Require encryption of data storage on device**: Require
+    - **Password expiration (days)**: `90`
+    - **Number of previous passwords to prevent reuse**: `5`
     - **Require password when device returns from idle state**: Require
+    - **Require encryption of data storage on device**: Require
     - **Firewall**: Require
     - **Antivirus**: Require
     - **Antispyware**: Require
@@ -231,21 +233,21 @@ You have successfully created notification message templates for compliance acti
 
 1. On the **Actions for noncompliance** page, review the default action:
     - **Action**: Mark device noncompliant
-    - **Schedule (days after noncompliance)**: 0 (immediately)
+    - **Schedule (days after noncompliance)**: Immediately (0)
 
 1. Select the dropdown below the **default** action to add additional actions:
     - **Action**: Send email to end user
-    - **Schedule**: 3 days after noncompliance
+    - **Schedule**: `3` days after noncompliance
     - **Message template**: Select **Device Non-Compliance Notification**
 
 1. Add another action:
     - **Action**: Send email to end user
-    - **Schedule**: 27 days after noncompliance
+    - **Schedule**: `27` days after noncompliance
     - **Message template**: Select **Device Retirement Warning**
 
 1. Add another action:
     - **Action**: Retire the noncompliant device
-    - **Schedule**: 30 days after noncompliance
+    - **Schedule**: `30` days after noncompliance
 
     > [!NOTE]
     > This gives users 30 days to remediate compliance issues before the device is retired (unenrolled) from Intune.
@@ -254,7 +256,7 @@ You have successfully created notification message templates for compliance acti
 
 1. On the **Assignments** page, under **Included groups**, select **+ Add groups**.
 
-1. Select **All Windows Devices**.
+1. Select **All Windows Devices** and select **Next**.
 
 1. On the **Review + create** page, review your configuration and select **Create**.
 
@@ -266,9 +268,8 @@ You have successfully created a compliance policy that enforces security require
 
 1. Select the **Windows Compliance - Security Requirements** policy.
 
-1. On the policy overview page, review:
-    - **Assignment status**: Number of assigned devices
-    - **Device compliance status**: Compliant, Not compliant, Other, Total
+1. On the **Monitor** tab, review:
+    - **Device status**: Compliant, Not compliant, Other, Total
 
     > [!NOTE]
     > Compliance evaluation occurs every 24 hours or when a device syncs. Initial evaluation can take several hours.
@@ -298,7 +299,7 @@ In this exercise, you will create a filter to target policies to specific device
 1. On the **Basics** page:
     - **Filter name**: `Corporate-Owned Devices Only`
     - **Description**: `Filter to include only corporate-owned devices`
-    - **Platform**: Windows and later
+    - **Platform**: Windows 10 and later
 
 1. Select **Next**.
 
@@ -309,7 +310,7 @@ In this exercise, you will create a filter to target policies to specific device
 
 1. The rule syntax should display: `(device.deviceOwnership -eq "Corporate")`
 
-1. Select **Preview devices** to see which devices match this filter (optional), and you'll notice the list is empty.
+1. (Optional) Select **Preview devices** to see which devices match this filter, and you'll notice the list includes SEA-WS1 and SEA-WS2. Windows computers joined to Entra are assumed to be Corporate owned. Close the preview window.
 
 1. Select **Next**.
 
@@ -321,21 +322,23 @@ You have successfully created a device filter for corporate-owned devices.
 
 In this task, you will manually mark one device as corporate-owned and one as personal to test the filter.
 
-1. Navigate to **Devices** → **All devices**.
+1. Navigate to **Devices** → **All devices**. Note the **Ownership** column.
 
-1. Select **SEA-WS1** from the device list.
+1. Select **SEA-WS2** from the device list.
 
-1. On the device overview page, select **Properties** in the left menu.
+1. On the device overview page, select **Properties** tab at the bottom of the right pane.
+
+1. Next to **Basic** select **Edit**.
 
 1. Change the **Ownership** field:
-    - **Ownership**: **Corporate**
+    - **Ownership**: **Personal**
 
-1. Check the box at the bottom that says **I acknowledge that I understand the results of this ownership change**
+1. Note the warning and check the box at the bottom that says **I acknowledge that I understand the results of this ownership change**
 
-1. Select **Save** at the top.
+1. Select **Next** and then **Save**.
 
     > [!NOTE]
-    > SEA-WS1 is now marked as corporate-owned and SEA-WS2 is already set as personal. The filter will target only SEA-WS1.
+    > SEA-WS2 is now marked as **Personal** (with Allan Deyoung as **Primary user**) and SEA-WS1 was already set as **Corporate** (with Alex Wilbur as **Primary User**). The filter will target only SEA-WS1.
 
 You have successfully configured device ownership for filter testing.
 
@@ -345,12 +348,13 @@ You have successfully configured device ownership for filter testing.
 
 1. Select the **Windows Security Settings - Corporate Devices** profile created earlier.
 
-1. Under **Assignments**, select **Edit**.
+1. Next to **Assignments**, select **Edit**.
 
-1. Under the **All Windows Devices** group assignment, you should see an option to **Edit filter**:
+1. On the **All Windows Devices** group assignment, select **Edit filter**:
     
 1. In the **Assignment filters** pane, choose **Include filtered devices in assignment**
     - Search for the filter you just create and choose **Corporate-Owned Devices Only**
+    - Select **Select** at the bottom of the pane.
 
 1. Select **Review + save** and then **Save**.
 
@@ -373,7 +377,7 @@ In this exercise, you will validate that policies are applied to your enrolled d
 
 1. Select **SEA-WS1** (corporate-owned device).
 
-1. At the top of the device page, select **Sync** to force an immediate policy check-in.
+1. At the top of the device page, select **Sync** and then **Sync device** to force an immediate policy check-in.
 
 1. Wait for the sync to complete (30-60 seconds).
 
@@ -387,14 +391,14 @@ In this exercise, you will validate that policies are applied to your enrolled d
 
 1. Go back to **All devices** and select **SEA-WS2** (personal device).
 
-1. Select **Sync** to refresh the device.
+1. Select **Sync** and then **Sync device** to refresh the device.
 
 1. In the left menu, select **Device configuration**.
 
 1. Verify that the **Windows Security Settings - Corporate Devices** profile does **NOT** appear for SEA-WS2.
 
     > [!TIP]
-    > This confirms the filter is working correctly - the policy only applies to corporate-owned devices (SEA-WS1), not personal devices (SEA-WS2).
+    > This confirms the filter is working correctly - the policy only applies to corporate-owned devices (SEA-WS1), not personal devices (SEA-WS2). Review the note at the top of the device configuration page: there may be a delay before this information is updated in the admin center.
 
 1. Leave the browser window open for the next task.
 
@@ -402,11 +406,11 @@ In this exercise, you will validate that policies are applied to your enrolled d
 
 1. You are still viewing your enrolled device in the **Microsoft Intune admin center**.
 
-1. In the left menu, select **Manage devices** and then **Compliance**.
+1. In the left menu, select**Devices** and under **Manage devices** select **Compliance**.
 
 1. Select the **Windows Compliance - Security Requirements** policy.
 
-1. Select  **Per-setting status** under **Additional monitoring reports**.
+1. Select  **Per-setting status** under **Additional monitoring reports** and select **Generate report**.
 
 1. Review the list of devices and note which settings failed. You would remediate these on the device to bring it into compliance.
     - Notice that two devices are noncompliant with the **BitLocker** setting.
