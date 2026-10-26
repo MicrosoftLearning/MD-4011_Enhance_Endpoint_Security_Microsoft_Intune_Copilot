@@ -115,13 +115,14 @@ You have successfully deployed the Windows security baseline to your enrolled de
 1. Select the **Windows 11 Security Baseline - Corporate Devices** profile.
 
 1. On the profile overview page, review:
-    - **Device status**: Success, Pending, Error, Conflict
-    - **Assignment status**: Number of assigned devices
-
+    - **Device and user check-in status**: Succeeded, Error, Conflict, Not appliable, In Progress
+    
     > [!NOTE]
     > Baseline deployment can take several hours as devices sync and apply the settings in the current baseline version. Status may show "Pending" initially.
 
-1. Select **Device status** in the left menu to view per-device deployment results.
+1. Select **Device assignment status**.
+
+2. Select **Generate report**.
 
 1. If any devices show "Error" or "Conflict," select the device to view detailed error messages.
 
@@ -139,9 +140,9 @@ In this exercise, you will configure the Microsoft Defender for Endpoint connect
 
 1. You are in the **Microsoft Intune admin center**.
 
-1. In the left navigation pane, expand **Endpoint security** and select **Defender for Endpoint**.
+1. In the left navigation pane, expand **Endpoint security** and select **Microsoft Defender for Endpoint**.
 
-1. On the **Defender for Endpoint** page, verify that **Connection status** shows **Enabled**.
+1. On the **Microsoft Defender for Endpoint** page, verify that **Connection status** shows **Enabled**.
 
     > [!NOTE]
     > In Lab 01, you provisioned Microsoft Defender for Endpoint and enabled the service-to-service connection. If the connection isn't enabled, return to Lab 01 and complete the readiness checks before continuing.
@@ -151,9 +152,9 @@ In this exercise, you will configure the Microsoft Defender for Endpoint connect
     | Setting | Value |
     |---------|-------|
     | **Allow Microsoft Defender for Endpoint to enforce Endpoint Security Configurations** | **On** (allows Defender to remediate vulnerabilities via Intune) |
-    | **Connect Windows devices version 10.0.15063 and above to Microsoft Defender for Endpoint** | **On** |
     | **Connect Android devices to Microsoft Defender for Endpoint** | Optional (On if you have Android devices) |
-    | **Connect iOS devices to Microsoft Defender for Endpoint** | Optional (On if you have iOS devices) |
+    | **Connect iOS/iPadOS devices to Microsoft Defender for Endpoint** | Optional (On if you have iOS devices) |
+    | **Connect Windows devices version 10.0.15063 and above to Microsoft Defender for Endpoint** | **On** |
 
 1. Select **Save** at the top of the page.
 
@@ -200,15 +201,15 @@ You have successfully deployed the preconfigured Defender for Endpoint onboardin
 
 1. Select **SEA-WS1** to view details and confirm the current equivalents of:
     - **Onboarding status**: Onboarded
-    - **Health state**: Active
+    - **Sensor Health state**: Active
     - **Risk level**: Current assessed risk
-    - **Last seen**: Recent timestamp
-    - **Active alerts**: Current alert count
+    - **Exposure level**: Current alert count
+    - **Last device update**: Recent timestamp
 
 1. Review the available device details, which can include:
     - **Timeline**: Security events and activities
     - **Security recommendations**: Actions to improve device security
-    - **Installed software**: Detected applications
+    - **Inventories**: Detected applications
     - **Discovered vulnerabilities**: CVEs affecting installed software
 
 1. Go back to the device inventory and select **SEA-WS2** to view its details.
@@ -216,7 +217,7 @@ You have successfully deployed the preconfigured Defender for Endpoint onboardin
 1. Compare the security posture of both devices:
     - Risk levels
     - Security recommendations
-    - Installed software inventory
+    - Inventories
     - Vulnerability counts
 
     > [!TIP]
@@ -256,13 +257,13 @@ In this exercise, you will configure ASR rules to block common attack techniques
 
     | Rule | Setting |
     |------|---------|
+    | **Block all Office applications from creating child processes** | **Block** |
     | **Block credential stealing from the Windows local security authority subsystem (lsass.exe)** | **Block** |
     | **Block executable content from email client and webmail** | **Block** |
-    | **Block all Office applications from creating child processes** | **Block** |
+    | **Block execution of potentially obfuscated scripts** | **Block** |
+    | **Block JavaScript or VBScript from launching downloaded executable content** | **Block** |
     | **Block Office applications from creating executable content** | **Block** |
     | **Block Office applications from injecting code into other processes** | **Block** |
-    | **Block JavaScript or VBScript from launching downloaded executable content** | **Block** |
-    | **Block execution of potentially obfuscated scripts** | **Block** |
     | **Block Win32 API calls from Office macros** | **Block** |
     | **Use advanced protection against ransomware** | **Block** |
     | **Block executable files from running unless they meet a prevalence, age, or trusted list criterion** | **Audit** (test first to avoid breaking legitimate apps) |
@@ -272,13 +273,11 @@ In this exercise, you will configure ASR rules to block common attack techniques
 
 1. Select **Next**.
 
-1. On the **Assignments** page, under **Included groups**, select **+ Add groups**.
-
-1. Select **All Windows Devices**.
-
-1. Select **Select**.
-
 1. Select **Next** through **Scope tags** (leave default).
+
+1. On the **Assignments** page, Search for and select **`All Windows Devices`**.
+
+1. Select **Next**.
 
 1. On the **Review + create** page, review and select **Create**.
 
@@ -302,7 +301,7 @@ In this exercise, you will review the security posture of your devices in the Mi
 
 1. On the **Vulnerability management** overview page, review the following metrics:
 
-    **Exposure score** (0-100):
+    **Endpoint exposure score** (0-100):
     - Measures overall organizational exposure to vulnerabilities
     - Lower score = better security posture
     - Based on discovered vulnerabilities, attack surface, and breach likelihood
@@ -312,10 +311,10 @@ In this exercise, you will review the security posture of your devices in the Mi
     - Higher score = better configuration compliance
     - Based on security baseline adoption and security control implementation
 
-    **Top security recommendations**:
+    **Top endpoint recommendations**:
     - List of prioritized actions to improve security (e.g., "Update Microsoft Office to the latest version," "Enable tamper protection," "Enable controlled folder access")
 
-    **Vulnerable devices**:
+    **Top exposed devices**:
     - Number of devices with known vulnerabilities
 
 1. Leave the browser window open for the next task.
@@ -353,8 +352,8 @@ In this exercise, you will review the security posture of your devices in the Mi
 1. On the **Alerts** page, review any security alerts detected on your devices:
     - **Severity**: Informational, Low, Medium, High, Critical
     - **Status**: New, In progress, Resolved
-    - **Detection source**: Defender Antivirus, ASR rules, EDR, etc.
-    - **Alert title**: Description of the threat (e.g., "Suspicious PowerShell execution detected")
+    - **Service/detection source**: Defender Antivirus, ASR rules, EDR, etc.
+    - **Alert name**: Description of the threat (e.g., "Suspicious PowerShell execution detected")
 
 1. Select an alert (if any exist) to view details:
     - **Alert story**: Timeline of events leading to the alert
