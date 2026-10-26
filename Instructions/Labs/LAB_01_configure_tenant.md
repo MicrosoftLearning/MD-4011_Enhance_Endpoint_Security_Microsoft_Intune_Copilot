@@ -140,8 +140,8 @@ In this task, you will verify that Intune/EMS licenses are already assigned to t
 
 1. Expand the assigned license details and verify the following services are enabled:
     - ✅ **Microsoft Intune**
+    - ✅ **Microsoft Defender for Endpoint**
     - ✅ **Microsoft Entra ID P2**
-    - ✅ **Microsoft Defender for Endpoint Plan 2**
 
 1. Close the user details pane.
 
@@ -178,18 +178,18 @@ In this task, you will assign the necessary Intune and security administrative r
 
 1. In the **Microsoft Entra admin center**, expand **Entra ID** and select **Users** → **All users**.
 
-1. In the user list, search for and select **Diego Siciliani**.
+1. In the user list, search for and select **`Diego Siciliani`**.
 
 1. In Diego's user profile, select **Assigned roles** in the left navigation.
 
 1. At the top of the page, select **+ Add assignments**.
 
 1. In the **Add assignments** pane, search for and select the following roles one-by-one and then select **Next**:
-    - **Intune Administrator**
-    - **Cloud Device Administrator**
-    - **Groups Administrator**
-    - **Conditional Access Administrator**
-    - **Security Administrator**
+    - **`Intune Administrator`**
+    - **`Cloud Device Administrator`**
+    - **`Groups Administrator`**
+    - **`Conditional Access Administrator`**
+    - **`Security Administrator`**
 
 1. On the **Setting** tab, ensure **Active** is selected under **Assignment type** (default).
 
@@ -229,7 +229,7 @@ In this task, you will sign out of the Global Administrator account and sign in 
 
 1. Open a new **Microsoft Edge** window.
 
-1. Navigate to the **Microsoft 365 admin center** at [**https://admin.microsoft.com**](https://admin.microsoft.com/).
+1. Navigate to the **Microsoft 365 admin center** at [**https://entra.microsoft.com**](https://entra.microsoft.com/).
 
 1. On the **Sign in** screen, enter **Diego Siciliani's** email address: `DiegoS@yourtenant.onmicrosoft.com`
 
@@ -274,7 +274,7 @@ In this task, you will configure Entra ID to allow users to join and register th
     |---------|-------|
     | **Users may join devices to Microsoft Entra** | **All** |
     | **Users may register their devices with Microsoft Entra** | **All** |
-    | **Require Multi-Factor Authentication to register or join devices with Microsoft Entra** | **No** (for lab purposes; enable in production) |
+    | **Require Multi-Factor Authentication to register or join devices with Microsoft Entra** | **No** (for lab purposes; enable in production if not using Conditional Access) |
     | **Maximum number of devices per user** | **50** (default; adjust based on your requirements) |
     | **Global administrator role is added as local administrator on the device during Microsoft Entra join** | **Yes** (default) |
     | **Registering user is added as local administrator on the device during Microsoft Entra join** | **All** (default) |
@@ -282,7 +282,7 @@ In this task, you will configure Entra ID to allow users to join and register th
     > [!TIP]
     > In a production environment, you would typically restrict device join/registration to specific groups and require MFA for enhanced security.
 
-1. At the top of the page, select **Save**.
+1. At the top of the page, select **Save** (if needed).
 
 1. Wait for the notification: "Successfully updated device settings."
 
@@ -325,10 +325,10 @@ In this task, you will create a static security group for the four pilot users w
 1. Under **Members**, select **No members selected**.
 
 1. On the **Add members** page, search for and select the **four pilot users** you verified earlier:
-    - **Alex Wilber**
-    - **Allan Deyoung**
-    - **Diego Siciliani**
-    - **Joni Sherman**
+    - **`Alex Wilber`**
+    - **`Allan Deyoung`**
+    - **`Diego Siciliani`**
+    - **`Joni Sherman`**
 
 1. Select **Select** at the bottom of the page.
 
@@ -367,7 +367,7 @@ In this task, you will create a dynamic device group that automatically includes
     |-------|-------|
     | **Property** | **deviceOSType** |
     | **Operator** | **Equals** |
-    | **Value** | **Windows** |
+    | **Value** | **`Windows`** |
 
 1. The rule syntax should appear as: `(device.deviceOSType -eq "Windows")`
 
@@ -408,7 +408,7 @@ In this task, you will enable automatic enrollment in Microsoft Intune for your 
 
 1. Set the **MDM user scope**:
     - Select **Some**
-    - Select **+ Select groups**
+    - Select **No groups selected**
     - Search for and select **Device Management Pilot Users**
     - Select **Select**
 
@@ -518,13 +518,13 @@ In this task, you will enable the bidirectional connection between Defender for 
 
 1. You are still in the **Microsoft Defender portal** at [**https://security.microsoft.com**](https://security.microsoft.com/).
 
-1. In the left navigation pane, expand **System** and select **Settings**.
+1. In the left navigation pane, expand **Setup and configuration** and select **Settings**.
 
 1. On the **Settings** page, select **Endpoints** from the left menu.
 
-1. Under **General**, select **Advanced features**.
+1. Under **General**, select **Optional features**.
 
-1. On the **Advanced features** page, scroll down and locate **Microsoft Intune connection**.
+1. On the **Optional features** page, scroll down and locate **Microsoft Intune connection**.
 
 1. Toggle **Microsoft Intune connection** to **On**.
 
@@ -545,9 +545,9 @@ In this task, you will verify that the Defender for Endpoint connector in Intune
 
 1. Return to the **Microsoft Intune admin center** tab where you are signed in as **Diego Siciliani**.
 
-1. In the left navigation pane, expand **Endpoint security** and select **Defender for Endpoint**.
+1. In the left navigation pane, expand **Endpoint security** and select **Microsoft Defender for Endpoint**.
 
-1. On the **Defender for Endpoint** page, verify that **Connection status** shows **Enabled**.
+1. On the **Microsoft Defender for Endpoint** page, verify that **Connection status** shows **Available**.
 
     > [!IMPORTANT]
     > The connection status can take up to **15 minutes** to update after you save the Intune connection setting in Defender. If it isn't enabled yet, wait and refresh the page.

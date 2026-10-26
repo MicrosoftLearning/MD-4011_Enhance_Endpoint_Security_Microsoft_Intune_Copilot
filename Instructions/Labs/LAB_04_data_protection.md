@@ -72,17 +72,17 @@ In this task, you will create an app protection policy for iOS/iPadOS devices to
 
 1. On the **Apps** tab, select **+ Select public apps**.
 
-1. On the **Select apps to target** page, in the search box, type **Microsoft** to filter the app list.
+1. On the **Select apps to target** page, in the search box, type **`Microsoft`** to filter the app list.
 
-1. Select the following apps by clicking the checkbox next to each:
-    - **Microsoft Outlook**
-    - **Microsoft Teams**
-    - **Microsoft OneDrive**
-    - **Microsoft Word**
-    - **Microsoft Excel**
-    - **Microsoft PowerPoint**
+1. Select the following apps by selecting each:
     - **Microsoft 365 Copilot**
-
+    - **Microsoft Excel**
+    - **Microsoft OneDrive**
+    - **Microsoft Outlook**
+    - **Microsoft PowerPoint**
+    - **Microsoft Teams**
+    - **Microsoft Word**
+    
 1. Select **Select** at the bottom of the page.
 
 1. Verify the selected apps are listed and then select **Next**.
@@ -92,9 +92,9 @@ In this task, you will create an app protection policy for iOS/iPadOS devices to
     **Data Transfer**:
     - **Backup org data to iTunes and iCloud backups**: **Block**
     - **Send org data to other apps**: **Policy managed apps**
-    - **Receive data from other apps**: **Policy managed apps**
     - **Save copies of org data**: **Block**
     - **Allow user to save copies to selected services**: Select **OneDrive for Business** and **SharePoint**
+    - **Receive data from other apps**: **Policy managed apps**
     - **Restrict cut, copy, and paste between other apps**: **Policy managed apps with paste in**
     - **Third party keyboards**: **Block**
 
@@ -116,15 +116,15 @@ In this task, you will create an app protection policy for iOS/iPadOS devices to
     - **Select minimum PIN length**: **6**
     - **Touch ID instead of PIN for access (iOS 8+/iPadOS)**: **Allow**
     - **Override biometrics with PIN after timeout**: **Require**
-    - **Timeout (minutes of inactivity)**: **30**
+    - **Timeout (minutes of inactivity)**: **`30`**
     - **Work or school account credentials for access**: **Require**
-    - **Recheck the access requirements after (minutes of inactivity)**: **30**
+    - **Recheck the access requirements after (minutes of inactivity)**: **`30`**
 
 1. Select **Next**.
 
 1. On the **Conditional launch** tab, review the default settings:
     - **Max PIN attempts**: 5 (Action: **Reset PIN**)
-    - **Offline grace period**: 720 minutes (Action: **Block access**)
+    - **Offline grace period**: 1440 minutes (Action: **Block access**)
     - **Offline grace period**: 90 days (Action: **Wipe data**)
     - **Jailbroken/rooted devices**: (Action: **Block access**)
 
@@ -157,14 +157,14 @@ In this task, you will create an app protection policy for Android devices with 
 
 1. On the **Apps** tab, select **+ Select public apps**.
 
-1. In the search box, type **Microsoft** and select the same apps as iOS:
-    - **Microsoft Outlook**
-    - **Microsoft Teams**
-    - **Microsoft OneDrive**
-    - **Microsoft Word**
-    - **Microsoft Excel**
-    - **Microsoft PowerPoint**
+1. In the search box, type **`Microsoft`** and select the same apps as iOS:
     - **Microsoft 365 Copilot**
+    - **Microsoft Excel**
+    - **Microsoft OneDrive**
+    - **Microsoft Outlook**
+    - **Microsoft PowerPoint**
+    - **Microsoft Teams**
+    - **Microsoft Word**
 
 1. Select **Select** and then **Next**.
 
@@ -173,9 +173,9 @@ In this task, you will create an app protection policy for Android devices with 
     **Data Transfer**:
     - **Backup org data to Android backup services**: **Block**
     - **Send org data to other apps**: **Policy managed apps**
-    - **Receive data from other apps**: **Policy managed apps**
     - **Save copies of org data**: **Block**
     - **Allow user to save copies to selected services**: Select **OneDrive for Business** and **SharePoint**
+    - **Receive data from other apps**: **Policy managed apps**
     - **Restrict cut, copy, and paste between other apps**: **Policy managed apps with paste in**
     - **Screen capture and Google Assistant**: **Block** 
     - **Approved keyboards**: **Not required**
@@ -195,9 +195,9 @@ In this task, you will create an app protection policy for Android devices with 
 1. On the **Access requirements** tab, configure the same settings as iOS:
     - PIN: **Require**, **Numeric**, minimum **6** digits, **Block** simple PIN
     - Biometric: **Allow**
-    - Override biometrics after **30** minutes
+    - Override biometrics after **`30`** minutes
     - Credentials: **Require**
-    - Recheck after: **30** minutes
+    - Recheck after: **`30`** minutes
 
 1. Select **Next**.
 
@@ -205,7 +205,7 @@ In this task, you will create an app protection policy for Android devices with 
 
 1. Select **Next**.
 
-1. On the **Assignments** tab, assign to **Device Management Pilot Users**.
+1. On the **Assignments** tab, assign to **`Device Management Pilot Users`**.
 
 1. Select **Next** and then **Create**.
 
@@ -238,9 +238,9 @@ In this exercise, you will create a conditional access policy that requires devi
     > **Understanding Policy Exclusions**: While this lab applies the policy to all users, in production environments you may need to exclude certain service accounts such as Microsoft Teams Rooms devices, conference room resource accounts, or automated service principals that cannot support MFA or device compliance. Always document exclusions with business justification and review them regularly as part of your security posture management.
 
     **Target resources**:
-    - **Select what this policy applies to**: Cloud apps
-    - **Include**: Select **Select apps**
-    - Search for and select: **Office 365 Exchange Online**
+    - **Select what this policy applies to**: Resources (formerly cloud apps)
+    - On the **Include** tab: Select **Select resources**
+    - Under **Select specific resources** select **None** and search for and select: **`Office 365 Exchange Online`**
 
     **Conditions**:
     - **Device platforms**: Not configured (applies to all platforms)

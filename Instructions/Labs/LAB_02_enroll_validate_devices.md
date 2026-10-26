@@ -58,11 +58,13 @@ In this task, you will connect your Windows device to your work or school accoun
 
 1. Select **Access work or school**.
 
-1. On the **Access work or school** page, you should see "No work or school accounts connected."
+1. On the **Access work or school** page, you should see "Add a work or school account."
 
 1. Select the **Connect** button.
 
-1. On the **Set up a work or school account** window, enter **Alex Wilber's email address**: `AlexW@yourtenant.onmicrosoft.com`
+1. On the **Set up a work or school account** window, select **Join this device to Microsoft Entra ID**
+
+1. Enter **Alex Wilber's email address**: `AlexW@yourtenant.onmicrosoft.com`
 
     > [!IMPORTANT]
     > Use Alex Wilber for the first device (SEA-WS1). You will use Allan Deyoung for the second device in Exercise 3.
@@ -73,20 +75,22 @@ In this task, you will connect your Windows device to your work or school accoun
 
 1. If prompted, complete **multi-factor authentication** (MFA) if it is enabled for your tenant.
 
+1. On the **Make sure this is your organization** window, verify the tenant name and select **Join**.
+
 1. On the **You're all set!** screen, review the message:
-    - "Your device has been joined to your organization's network."
-    - "Your organization might control some settings and apps on this device."
+    - "This device is connected to *[Your Organization]*."
 
 1. Select **Done**.
 
 1. You are returned to the **Access work or school** page. You should now see a connection listed:
+    - **Connected by AlexW@yourtenant.onmicrosoft.com**
     - **Connected to [Your Organization]'s Entra ID**
-    - User account: **AlexW@yourtenant.onmicrosoft.com**
-    - Status: **Connected**
 
-1. Below the connection, you may see an **Info** button. Select it to view connection details:
-    - **Device state**: Entra ID joined
-    - **Management**: Enrolled in MDM (Microsoft Intune)
+1. Expand the connection and select the **Info** button to view connection details:
+    - **Areas managed by [Your Organization]** with: **Policies**
+    - **Connection info** with: **Management Server Address**: **https://r.manage.microsoft.com/...** (Microsoft Intune)
+    - **Device sync status** and a **Sync** button
+    - **Advanced Diagnostic Report** and a **Create report** button
 
     > [!NOTE]
     > If "Management" shows "Pending" or "Not enrolled," wait 1-2 minutes and refresh. Automatic MDM enrollment can take a moment to complete.
@@ -149,13 +153,15 @@ In this task, you will review the device properties to understand how Entra ID t
     | **Device ID** | Unique identifier assigned by Entra ID (GUID) |
     | **Object ID** | Entra ID object identifier (GUID) |
     | **Enabled** | Yes (device is active) |
-    | **OS** | Windows 11 (or Windows 10) |
+    | **OS** | Windows |
     | **Version** | Full OS version (e.g., 10.0.22621.0) |
-    | **Join Type** | Should show **Azure AD Joined** ✅ |
+    | **Join Type** | Should show **Microsoft Entra joined** ✅ |
     | **User principal name** | AlexW@yourtenant.onmicrosoft.com |
     | **MDM** | Microsoft Intune ✅ (confirms MDM enrollment) |
+    | **Security settings management** | Microsoft Intune ✅ |
     | **Compliant** | Yes |
     | **Activity** | Timestamp of most recent device activity |
+    | Groups | All Windows Devices |
 
 1. Leave the browser window open for the next exercise.
 
@@ -173,9 +179,9 @@ In this exercise, you will enroll a second Windows 11 device (SEA-WS2) into Intu
 
 In this task, you will join the second workstation to Entra ID using **Allan Deyoung's** account.
 
-1. In the lab interface, switch from **SEA-WS1** to **SEA-WS2** using the available resource selector, workstation tab, or virtual-machine list. Confirm that **SEA-WS2** is selected.
+1. In the lab interface, switch from **SEA-WS1** to **SEA-WS2** using the available resource selector, workstation tab, or virtual-machine list. Confirm that **SEA-WS2** is selected. If needed, sign in with the local administrator's credentials.
 
-1. On **SEA-WS2**, open **Settings** by pressing **Windows key + I**.
+1. On **SEA-WS2**, open **Settings** by pressing **Windows key + I** (or right-click Start and select **Settings**).
 
 1. In the Settings app, select **Accounts** from the left navigation pane.
 
@@ -183,7 +189,9 @@ In this task, you will join the second workstation to Entra ID using **Allan Dey
 
 1. On the **Access work or school** page, select the **Connect** button.
 
-1. On the **Set up a work or school account** window, enter **Allan Deyoung's email address**: `AllanD@yourtenant.onmicrosoft.com`
+1. On the **Set up a work or school account** window, select **Join this device to Microsoft Entra ID** 
+
+1. Enter **Allan Deyoung's email address**: `AllanD@yourtenant.onmicrosoft.com`
 
     > [!IMPORTANT]
     > Use Allan Deyoung for the second device (SEA-WS2) to test multi-user scenarios in later labs.
@@ -192,20 +200,19 @@ In this task, you will join the second workstation to Entra ID using **Allan Dey
 
 1. Enter the **password** for **Allan Deyoung's** account.
 
+1. On the **Make sure this is your organization** window, verify the tenant name and select **Join**.
+
 1. If prompted, complete **multi-factor authentication** (MFA).
 
-1. On the **You're all set!** screen, review the confirmation message.
+1. On the **You're all set!** screen, review the confirmation message and select **Done**.
 
-1. Select **Done**.
-
-1. Verify the connection shows:
-    - **Connected to [Your Organization]'s Azure AD**
-    - User account: `AllanD@yourtenant.onmicrosoft.com`
-    - Status: **Connected**
-
-1. Select the **Info** button and verify:
-    - **Device state**: Azure AD joined
-    - **Management**: Enrolled in MDM (Microsoft Intune)
+1. Verify that the device is now:
+   - **Connected by AllanD@yourtenant.onmicrosoft.com**
+   - **Connected to [Your Organization]'s Entra ID**.
+ 
+1. Expand the section and select the **Info** button and verify:
+    - **Areas managed by [Your Organization]** includes: **Policies**
+    - **Management Server Address**: **https://r.manage.microsoft.com/...** (Microsoft Intune)
 
 1. **Close** the Settings app.
 
@@ -222,20 +229,17 @@ In this task, you will confirm both devices appear in the Intune device inventor
 1. In the left navigation pane, expand **Devices** and select **All devices**.
 
 1. On the **All devices** page, verify you now see **two enrolled devices**:
-    - **SEA-WS1** (enrolled by AlexW@...)
-    - **SEA-WS2** (enrolled by AllanD@...)
+    - **SEA-WS1** (Owner: AlexW@...)
+    - **SEA-WS2** (Owner: AllanD@...)
 
 1. Select **SEA-WS2** to view its device details.
 
-1. On the Overview tab, verify:
-    - **Primary user**: Allan Deyoung
-    - **Operating System**: Windows
-    - **Compliance state**: Not evaluated (no policies assigned yet)
-    - **Last check-in**: Recent timestamp
-
-1. In the left menu, select **Group membership**.
-
-1. Verify SEA-WS2 is also a member of the **All Windows Devices** dynamic group.
+1. On the Properties tab, verify:
+    - **Owner**: Allan Deyoung
+    - **OS**: Windows
+    - **Compliant**: Yes
+    - **Activity**: Recent timestamp
+    - **Groups**: All Windows Devices
 
 1. Leave the browser window open for the next exercise.
 
@@ -253,15 +257,17 @@ In this exercise, you will manually trigger device synchronization from both the
 
 In this task, you will initiate a manual sync from the Intune admin center.
 
-1. In the left navigation pane, expand **Devices** and select **All devices**.
+1. In the left navigation pane, select **Devices** and select **All devices**.
 
-1. Select **SEA-WS1** to open its device details page.
+1. Select **SEA-WS1** to open its **Properties** page.
 
-1. At the top of the device details page, locate the toolbar with device actions.
+1. At the top of the properties page, locate the toolbar with device actions and select **Manage**.
 
-1. Select **Sync** (or the ellipsis **...** → **Sync** if the button is collapsed).
+1.  At the top of the Overview page, locate the toolbar with device actions and select **Sync** (or the ellipsis **...** → **Sync** if the button is collapsed).
 
-1. A confirmation message appears: **"Sync intiated."**
+1. A confirmation message appears: select **Yes**.
+
+1. A notification appears (at the upper-right): **"Sync intiated."**
 
 1. The device will receive a notification to check in with Intune immediately (instead of waiting for the scheduled 8-hour sync interval).
 
@@ -282,7 +288,7 @@ In this task, you will initiate a sync from the Windows device itself.
 
 1. Select **Accounts** → **Access work or school**.
 
-1. Select your work or school account connection (e.g., **Connected to [Your Organization]'s Azure AD**).
+1. Expand your work or school account connection (e.g., **Connected by AlexW@yourtenant.onmicrosoft.com**).
 
 1. Select the **Info** button.
 
